@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Welcome to ArtMapr</title>
+
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+	<!-- Bootstrap and Bootcards CSS / JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+	
+	<!-- MapBox CSS/JS -->
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+
+	<link rel="stylesheet" href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+
+	<!-- ArtMapr CSS/JS -->
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<script src="javascript/app.js"></script>
+
+	<!-- Sidepanel CSS -->
+	<link rel="stylesheet" href="stylesheets/light-theme.css">
+    <link rel="stylesheet" href="stylesheets/makeitresponsive.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+		<a class="navbar-brand" href="/">
+        	<img alt="ArtMapr Brand Logo" src="images/ArtMapr-Logo-White.png" width="40px">
+    	</a>
+    	<button class="btn btn-default navbar-right" type="submit">Sign Up</button>
+    	<button class="btn btn-default navbar-right" type="submit">Log In</button>
+	</nav>
+
+	<div class="container-fluid">
+		<div id="map" class="col-xs-12 col-sm-6 col-md-8"></div>
+
+		<div id="sidepanel" class="col-xs-6 col-md-4">
+			
+	        <div class="context subheader">
+	          <!-- <p>Map created by <a href="#">{Link to your website}</a></p> -->
+	          <form class="navbar-form" role="search">
+	          	<input type="text" class="form-control" placeholder="Search">
+	          </form>
+	        	<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+	        </div>
+
+	        <article class="panel panel-default bootcards-media col-md-6 col-xs-12">
+
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Media Card Heading</h3>
+				  </div>
+
+				  <div class="panel-body">
+				    Media card description
+				  </div>
+
+				  <img src="http://www.teamstudio.com/Portals/218295/images/istock_000001242290small.jpg" class="img-responsive" alt="Responsive image"/>
+
+				  <div class="panel-footer">
+				    <div class="btn-group btn-group-justified"></div>
+				  </div>
+  
+			</article>
+	    </div>
+    </div>
+
+	<script type = "text/template" id = "artmapr-article-template">
+
+	</script>
+</body>
+</html>
