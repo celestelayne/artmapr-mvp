@@ -5,18 +5,7 @@
     "bower": "^1.4.1",
     "express": "^4.12.4",
     "express-session": "^1.11.2",
-    "mongoose": "^4.0.3",
-    "request": "^2.55.0",
-    "sequelize-cli": "^1.7.0"
-  },
-  "name": "artmapr",
-  "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
-  "author": "",
-  "license": "ISC",
-  "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower install"
+    "mongoose": "^4.0.4",
+    "request": "^2.56.0"
   }
 }
