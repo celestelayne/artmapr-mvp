@@ -2,7 +2,7 @@
 var mongoose = require("mongoose");
 
 // Mongoose connection to MongoDB
-mongoose.connect("mongodb://localhost/artmapr_app", function (err){
+mongoose.connect( process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost/artmapr_app", function (err){
 	if (err) {
 		console.log(err);
 	}
