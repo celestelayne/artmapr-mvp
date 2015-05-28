@@ -84,7 +84,7 @@ app.get("/arts", function (req, res){
 	console.log("Requesting data from Socrata...")
 
 	request.get({
-		uri: "https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, created_at, title, geometry, medium&$limit=20",
+		uri: "https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, created_at, title, geometry, medium&$limit=50",
 		// qs: {
 		// 	limit: 1,
 		// 	api_key: "3lWj6pK22BaDixjnFjFF06inN"
@@ -96,23 +96,23 @@ app.get("/arts", function (req, res){
 			res.send("There was an error")
 		}
 			console.log("Socrata API response is back")
-			debugger;
+			
 			var body = JSON.parse(apiRes.body);
-			var coordinates = JSON.parse(body[1].geometry).coordinates.reverse();
+			// var coordinates = JSON.parse(body[3].geometry).coordinates.reverse();
 
 			console.log("Grabbing the civic art data")
-			res.send(coordinates)
+			res.send(body)
 	});
 });
 
 // User submits sign-up form
-app.post("/users", function (req, res){
+app.post("/signup", function (req, res){
 // grabs user from params
 	var newUser = req.body.user;
 // Create new user
 	db.User.createSecure(newUser, function (err, user){
 		if (user) {
-			res.login(user);
+			req.login(user);
 			res.redirect("/profile");
 		} else {
 			res.redirect("/signup");
@@ -124,6 +124,8 @@ app.post("/login", function (req, res){
 	var user = req.body.user;
 
 	db.User.authenticate(user, function (err, user){
+		console.log(user);
+		console.log(err);
 		if (!err) {
 			req.login(user);
 			res.redirect("/profile");

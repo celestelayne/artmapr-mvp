@@ -32,19 +32,64 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-default">
+
+	<div id="modal-container">
+		<div id="loginModal" class="modal fade auth has-backdrop" tabindex="-1" role="dialog">
+			<div class="modal-backdrop">
+				<div class="modal-dialog "> <!-- Modal dialog -->
+					<header class="modal-header">
+					<!-- put button in here --><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+						<img src="images/ArtMapr-Logo-05.png" width="100px" class="img-responsive" alt="Responsive image">
+  						<aside>Log in to ArtMapr</aside>
+					</header>
+					<section class="modal-body">
+						<div class= "col-md-4 col-md-offset-4">
+						<form action="/views/login" class="auth-login-email auth-form">
+							<div class="form-group" id="auth-body">
+
+							<input class="form-control" type="email" name="user[email]" placeholder="Email" required="required" autofocus="autofocus">
+
+							<input class="form-control" type="password" name="user[password]" placeholder="Password" autocomplete="on" required="required" value="">
+							</div>
+							<div class="checkbox">
+				    	    	<label>
+				    	    		<input name="remember" type="checkbox" value="Remember Me" checked	> Remember Me
+				    	    	</label>
+				    	    </div>
+				    	    <div class="modal-footer">
+				    	    	<a href="#" class="btn btn-outlined btn-theme" data-wow-delay="0.7s">Log In Here</a>
+				    	    </div>
+			    	    </form>
+			    	    </div>
+					</section>
+					<footer>
+						<p>Don’t have an account?&nbsp;<a href="/signup" data-mode="login" class="faux-underline small-caps auth-toggle">Log In</a></p>
+					</footer>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<nav class="navbar navbar-default"> <!-- Main Layout Header -->
+		<div class="col-md-8">
 		<a class="navbar-brand" href="/">
-        	<img alt="ArtMapr Brand Logo" src="images/ArtMapr-Logo-White.png" width="40px">
+        	<img alt="ArtMapr Brand Logo" src="images/ArtMapr-Logo-05.png" width="80px">
     	</a>
-    	<button class="btn btn-default navbar-right" type="submit">Sign Up</button>
-    	<button class="btn btn-default navbar-right" type="submit">Log In</button>
+    	</div>
+    	<div class="col-md-4">
+    		<a href="#" id="signup-button" class="btn btn-outlined btn-theme navbar-right" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+    		<a href="#" id="login-button" class="btn btn-outlined btn-theme navbar-right" data-toggle="modal" data-target="#loginModal">Log In</a>
+    	</div>
+    	
 	</nav>
 
 	<div class="container-fluid">
 		<div id="map" class="col-xs-12 col-sm-6 col-md-8"></div>
-
+		<!-- Geolocation Button -->
+		<!-- <a href='#' id='geolocate' class='ui-button'>Find me</a> -->
+		
 		<div id="sidepanel" class="col-xs-6 col-md-4">
-			
+
 	        <div class="context subheader">
 	          <!-- <p>Map created by <a href="#">{Link to your website}</a></p> -->
 	          <form class="navbar-form" role="search">
@@ -53,7 +98,7 @@
 	        	<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 	        </div>
 
-	        <article class="panel panel-default bootcards-media col-md-6 col-xs-12">
+	        <article class="panel panel-default bootcards-media col-md-6 col-xs-12" id = "artmapr-cards">
 
 				  <div class="panel-heading">
 				    <h3 class="panel-title">Media Card Heading</h3>
@@ -73,8 +118,10 @@
 	    </div>
     </div>
 
-	<script type = "text/template" id = "artmapr-article-template">
+	<script type = "text/template" id = "artmapr-cards-template">
+	/* Template goes here*/
 
+		// $('#loginModal').modal('hide');
 	</script>
 </body>
 </html>

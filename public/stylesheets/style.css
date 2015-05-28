@@ -3,9 +3,22 @@
   	padding:0; 
   }
 
+/*Modal*/
+  .modal-backdrop {
+    background-color: #5B3586;
+    /*opacity: 0.5;*/
+  }
+
   .container-fluid{
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .navbar-brand>img {
+  display: block;
+  -webkit-box-shadow: 15px 15px 100px -15px rgba(20,20,20,1);
+  -moz-box-shadow: 15px 15px 100px -15px rgba(20,20,20,1);
+  box-shadow: 15px 15px 100px -15px rgba(20,20,20,1);
   }
   
   nav.navbar.navbar-default {
@@ -22,11 +35,39 @@
   	width:100%; 
   }
 
+/*Find Me Button
+  .ui-button {
+  background:#3887BE;
+  color:#FFF;
+  display:block;
+  position:absolute;
+  top:50%;left:50%;
+  width:160px;
+  margin:-20px 0 0 -80px;
+  z-index:100;
+  text-align:center;
+  padding:10px;
+  border:1px solid rgba(0,0,0,0.4);
+  border-radius:3px;
+  }
+  
+  .ui-button:hover {
+    background:#3074a4;
+    color:#fff;
+  }*/
+
   article {
     background-color: green;
   }
 
-  button.btn.btn-default.navbar-right {
+ /* #signup-button  {
+    display: inline-block;
+    margin: auto;
+    width: 40%;
+    z-index: 5;
+  }*/
+
+  a.btn.btn-outlined.btn-theme.navbar-right {
   width: 150px;
   height: 40px;
   margin-right: 40px;
@@ -36,5 +77,101 @@
   /*opacity: 0.5;*/
   font-size: 18px;
   border-radius: 0;
-  margin-top: .5%;
+  margin-top: 1%;
   }
+
+  a.btn.btn-outlined.btn-theme.navbar-right:hover,
+  a.btn.btn-outlined.btn-theme.navbar-right:active {
+    color: #FFF;
+    background: #F2F2F2;
+    border-color: #F2F2F2;
+}
+
+  /*Login Page CSS*/
+
+
+  .img-responsive {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+
+  aside {
+    font-family: 'Libre Baskerville', serif;
+    text-align: center;
+    margin: 20px;
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  input.form-control {
+    border-radius: 0;
+  }
+
+  .form-control:focus {
+    border: 2px solid;
+    border-color: #5B3586;
+   outline: 0;
+   box-shadow: none;
+  }
+
+  .panel.panel-default {
+    border-radius: 0;
+  }
+  
+  .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox] {
+  position: absolute;
+  margin-top: 4px \9;
+  margin-left: -20px;
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  box-shadow: none;
+  }
+
+  a.btn.btn-outlined.btn-theme {
+    display: block;
+    margin: auto;
+    width: 60%;
+  }
+
+  .btn {
+  letter-spacing: 1px;
+  text-decoration: none;
+  background: none;
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+  font-size:14px;
+  line-height:20px;
+  font-weight:700;
+  text-transform:uppercase;
+  border: 3px solid;
+  padding:8px 20px;
+}
+
+.btn-outlined {
+    border-radius: 0;
+    -webkit-transition: all 0.3s;
+       -moz-transition: all 0.3s;
+            transition: all 0.3s;
+}
+
+.btn-outlined.btn-theme {
+    background: none;
+    color: #5B3586;;
+    border-color: #5B3586;;
+}
+
+.btn-outlined.btn-theme:hover,
+.btn-outlined.btn-theme:active {
+    color: #FFF;
+    background: #5B3586;
+    border-color: #5B3586;
+}

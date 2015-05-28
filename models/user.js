@@ -1,11 +1,7 @@
-// Load bcrypt module
-var bcrypt = require("bcrypt");
 // Load mongoose module
 var mongoose = require("mongoose");
-
-var confirm = function (pswrd, pswrdCon) {
-	return pswrd === pswrdCon;
-};
+// Load bcrypt module
+var bcrypt = require("bcrypt");
 
 var userSchema = new mongoose.Schema({
 	email: {
@@ -27,8 +23,16 @@ var userSchema = new mongoose.Schema({
 	last_name: {
 		type: String,
 		default: ""
+	},
+	favorites: {
+		type: String,
+		default: ""
 	}
 });
+
+var confirm = function (pswrd, pswrdCon) {
+	return pswrd === pswrdCon;
+};
 
 // Create user
 userSchema.statics.createSecure = function (params, callback) {

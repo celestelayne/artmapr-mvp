@@ -9,56 +9,78 @@ var map = L.mapbox.map('map', 'clayne.i6afai85', {
 
 new L.Control.Zoom({ position: 'bottomleft' }).addTo(map);
 
-// Keep place markers organized in a nice group.
-var  artmaprPlaces = L.layerGroup().addTo(map);
+/*var featureLayer = L.mapbox.featureLayer.setGeoJSON().addTo(map);
+    featureLayer.on("/arts", function (body) {
+    var marker = body.featureLayer,
+        feature = marker.feature;
 
-// soda api endpoint
-
-// Use jQuery to make an AJAX request to Socrata to load markers data.
-$.getJSON("/arts", function (res){
-    $.each(res, function (i, v){
-        console.log(v);
-    });
-});
-
-
-/*$.getJSON("/arts", function (data) {
-    L.GeoJSON(data, {
-        pointToLayer: function (feature, latlng) {
-        var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-        return marker; console.log(latlng);},
-        
-        onEachFeature: function (feature, coords) {
-            coords.bindPopup(feature.properties.geometry);
-            coords.push([feature.geometry.coordinates[1],feature.geometry.coordinates[0]]); },
-        
-        coordsToLatLng: function (coords) { // (Array[, Boolean]) -> LatLng
-            return new L.LatLng(coords[1], coords[0], coords[2]); }
-    });
-    addData(map); 
+    marker.setIcon(L.mapbox.marker.icon({
+        'marker-color': '#ff8888',
+        'marker-size': 'large'
+    }));
 });*/
+var api_endpoint = "https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, created_at, title, geometry, medium&$limit=50";
+// Add an empty feature layer to the map
+var artLayer = L.layerGroup().addTo(map);
 
-/*var featureLayer = L.mapbox.featureLayer({
-    // this feature is in the GeoJSON format: see geojson.org
-    // for the full specification
-    type: 'Feature',
-    geometry: {
-        type: 'Point',
-        // coordinates here are in longitude, latitude order because
-        // x, y is the standard for GeoJSON and many formats
-        coordinates: [
-            -122.4120591,
-            37.8085303
-        ]
-    },
-    properties: {
-        title: 'Peregrine Espresso',
-        description: '1718 14th St NW, Washington, DC',
-        // one can customize markers by adding simplestyle properties
-        // https://www.mapbox.com/guides/an-open-platform/#simplestyle
-        'marker-size': 'large',
-        'marker-color': '#BE9A6B',
-        'marker-symbol': 'cafe'
-    }
-}).addTo(map);*/
+// Make AJAX call to backend GET request 
+var artgeo = $.getJSON(api_endpoint, function (results, status){
+    results.shift();
+    console.log("RESULTs", results);
+    
+    $.each(results, function (index, result){
+         console.dir(result);
+         result.geometry = JSON.parse(result.geometry);
+         L.mapbox.featureLayer({
+            type: "Feature",
+            geometry: result.geometry,
+            properties: {
+                title: result.title,
+                description: "Artist: " + result.artist + ", " + result.medium,
+                // one can customize markers by adding simplestyle properties
+                // https://www.mapbox.com/guides/an-open-platform/#simplestyle
+                "icon": {
+                    "iconUrl": "/images/art_icon.png",
+                    "iconSize": [100, 100],
+                    "iconAnchor": [50, 50],
+                    "popupAnchor": [0, -55],
+                    "className": "dot"
+                }
+            }
+        }).addTo(map).
+         on('layeradd', function(e) {
+            var marker = e.layer,
+                feature = marker.feature;
+
+            marker.setIcon(L.icon(feature.properties.icon));
+        });
+         });
+
+        if (!navigator.geolocation) {
+            geolocate.innerHTML = 'Geolocation is not available';
+        } else {
+            geolocate.onclick = function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                map.locate();
+            };
+        }
+        map.on('locationfound', function(e) {
+        map.fitBounds(e.bounds);
+
+        myLayer.setGeoJSON({
+            type: 'Feature',
+            geometry: result.geometry,
+            properties: {
+                'marker-color': '#ff8888',
+                'marker-symbol': 'star'
+                 }
+            });
+            geolocate.parentNode.removeChild(geolocate);
+        });
+            map.on('locationerror', function() {
+            geolocate.innerHTML = 'Position could not be found';
+        });
 });
+
+}); // closes jQuery ready function 
