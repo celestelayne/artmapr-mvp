@@ -29,29 +29,77 @@
 	<!-- Sidepanel CSS -->
 	<link rel="stylesheet" href="stylesheets/light-theme.css">
     <link rel="stylesheet" href="stylesheets/makeitresponsive.css">
+
+    <!-- Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-
 	<div id="modal-container">
-		<div id="loginModal" class="modal fade auth has-backdrop" tabindex="-1" role="dialog">
-			<div class="modal-backdrop">
-				<div class="modal-dialog "> <!-- Modal dialog -->
+		<div id="loginModal" class="modal fade col-md-4 col-md-offset-4" tabindex="-1" role="dialog">
+			<div class="modal-backdrop panel panel-default">
+				<div class="modal-dialog "> 
 					<header class="modal-header">
-					<!-- put button in here --><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: 15%">x</button>
 						<img src="images/ArtMapr-Logo-05.png" width="100px" class="img-responsive" alt="Responsive image">
   						<aside>Log in to ArtMapr</aside>
 					</header>
+
 					<section class="modal-body">
-						<div class= "col-md-4 col-md-offset-4">
-						<form action="/views/login" class="auth-login-email auth-form">
-							<div class="form-group" id="auth-body">
-
-							<input class="form-control" type="email" name="user[email]" placeholder="Email" required="required" autofocus="autofocus">
-
-							<input class="form-control" type="password" name="user[password]" placeholder="Password" autocomplete="on" required="required" value="">
+						<div class= "modal-window col-md-6 col-md-offset-3">
+<!-- Login Form -->		<form method="POST" id="login-form" action="/login" class="auth-login-email auth-form" accept-charset="UTF-8" role="form">
+							<div class="form-group"> <!-- Full Name --> 
+								<input class="modal-form-control" type="email" name="user[email]" placeholder="Email" required="required" autofocus="autofocus">
 							</div>
-							<div class="checkbox">
+							<div class="form-group"> <!-- Enter Password -->
+								<input class="modal-form-control" type="password" name="user[password]" placeholder="Password" autocomplete="on" required="required" value="">
+							</div>
+							<div class="checkbox"> <!-- Checkbox -->
+				    	    	<label>
+				    	    		<input name="remember" type="checkbox" value="Remember Me" checked	> Remember Me
+				    	    	</label>
+				    	    </div>
+				    	    <div class="modal-footer">
+				    	    	<a href="#" class="btn btn-outlined btn-theme" data-wow-delay="0.7s">Log In Here</a>
+				    	    	<div>
+									<p>Don’t have an account?&nbsp;<a href="#" data-mode="signup" id="signup-trigger" class="faux-underline small-caps">Sign Up</a></p>
+								</div>
+				    	    </div>
+			    	    </form>
+			    	</div>
+			    </section>
+    	    </div>
+		</div>
+	</div> <!-- End of Login Modal -->
+	</div> <!-- Modal Container Closer -->
+
+		<div id="signupModal" class="modal fade col-md-4 col-md-offset-4" tabindex="-1" role="dialog">
+			<div class="modal-backdrop panel panel-default">
+				<div class="modal-dialog "> 
+					<header class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: 15%">x</button>
+						<img src="images/ArtMapr-Logo-05.png" width="100px" class="img-responsive" alt="Responsive image">
+  						<aside>Helping you discover</br>art that you'll love</aside>
+						</header>
+						<section class="modal-body">
+						<div class= "modal-window col-md-6 col-md-offset-3">
+<!-- Sign Up Form --> 	<form id="signup-form" method="POST" action="/signup" accept-charset="UTF-8" role="form">
+							<div class="form-group"> <!-- First Name --> 
+								<input class="modal-form-control" type="text" name="user[first_name]" placeholder="First Name" required="required" autofocus="autofocus">
+							</div>
+							<div class="form-group"> <!-- Last Name --> 
+								<input class="modal-form-control" type="text" name="user[last_name]" placeholder="Last Name" required="required" autofocus="autofocus">
+							</div>
+							<div class="form-group"> <!-- Enter Email -->
+								<input class="modal-form-control" type="email" name="user[email]" placeholder="Email" autocomplete="on" required="required" value="">
+							</div>
+							<div class="form-group"> <!-- Enter Password -->
+								<input class="modal-form-control" type="password" name="user[password]" placeholder="Password" autocomplete="on" required="required" value="">
+							</div>
+							<div class="form-group"> <!-- Confirm Password -->
+								<input class="modal-form-control" type="password" name="user[password_confirmation]" placeholder="Confirm Password" autocomplete="on" required="required" value="">
+							</div>
+							<div class="checkbox"> <!-- Checkbox -->
 				    	    	<label>
 				    	    		<input name="remember" type="checkbox" value="Remember Me" checked	> Remember Me
 				    	    	</label>
@@ -59,16 +107,17 @@
 				    	    <div class="modal-footer">
 				    	    	<a href="#" class="btn btn-outlined btn-theme" data-wow-delay="0.7s">Log In Here</a>
 				    	    </div>
+				    	    <div>
+								<p>Already have an account?&nbsp;<a href="#" data-mode="login" id="login-trigger" class="faux-underline small-caps">Log In</a></p>
+							</div>
 			    	    </form>
-			    	    </div>
-					</section>
-					<footer>
-						<p>Don’t have an account?&nbsp;<a href="/signup" data-mode="login" class="faux-underline small-caps auth-toggle">Log In</a></p>
-					</footer>
-				</div>
-			</div>
+			    	</div>
+			    </section>
+    	    </div>
 		</div>
-	</div>
+	</div>	<!-- End of Signup Modal -->
+
+			<!-- End of Modals -->
 
 	<nav class="navbar navbar-default"> <!-- Main Layout Header -->
 		<div class="col-md-8">
@@ -77,7 +126,7 @@
     	</a>
     	</div>
     	<div class="col-md-4">
-    		<a href="#" id="signup-button" class="btn btn-outlined btn-theme navbar-right" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+    		<a href="#" id="signup-button" class="active btn btn-outlined btn-theme navbar-right" data-toggle="modal" data-target="#signupModal">Sign Up</a> <!-- Sign Up Button -->
     		<a href="#" id="login-button" class="btn btn-outlined btn-theme navbar-right" data-toggle="modal" data-target="#loginModal">Log In</a>
     	</div>
     	
@@ -90,29 +139,29 @@
 		
 		<div id="sidepanel" class="col-xs-6 col-md-4">
 
-	        <div class="context subheader">
+	        <div class="context subheader" style="border-bottom-color: transparent">
 	          <!-- <p>Map created by <a href="#">{Link to your website}</a></p> -->
-	          <form class="navbar-form" role="search">
-	          	<input type="text" class="form-control" placeholder="Search">
+	          <!-- <form class="navbar-form" role="search"> -->
+	          	<!-- <input type="text" class="form-control" placeholder="Search"> -->
 	          </form>
-	        	<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+	        	<!-- <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button> -->
 	        </div>
 
 	        <article class="panel panel-default bootcards-media col-md-6 col-xs-12" id = "artmapr-cards">
 
 				  <div class="panel-heading">
-				    <h3 class="panel-title">Media Card Heading</h3>
+				    <h3 class="panel-title">The Dewey Monument</h3>
 				  </div>
 
 				  <div class="panel-body">
-				    Media card description
+				  	<h5><span>Artist:</span> Aitken, Robert Ingersoll</h5>
 				  </div>
 
-				  <img src="http://www.teamstudio.com/Portals/218295/images/istock_000001242290small.jpg" class="img-responsive" alt="Responsive image"/>
+				  <img src="images/d_bloomfield.jpg" class="img-responsive" alt="Responsive image"/>
 
-				  <div class="panel-footer">
+				  <!-- <div class="panel-footer">
 				    <div class="btn-group btn-group-justified"></div>
-				  </div>
+				  </div> -->
   
 			</article>
 	    </div>
@@ -121,7 +170,26 @@
 	<script type = "text/template" id = "artmapr-cards-template">
 	/* Template goes here*/
 
-		// $('#loginModal').modal('hide');
+/*	$("#login-trigger").click(function(){
+	  $('#signupModal').modal('hide');
+	  $('#loginModal').modal('show');
+	});
+
+	$("#signup-trigger").click(function(){
+	  $('#loginModal').modal('hide');
+	  $('#signupModal').modal('show');
+	});
+
+	$('#loginModal').on('shown.bs.modal', function (event) {
+	  var button = $(event.relatedTarget) // Link that triggered the modal
+	  var recipient = button.data('whatever') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  modal.find('.modal-title').text('New message to ' + recipient)
+	  modal.find('.modal-body input').val(recipient)
+	})*/
+
 	</script>
 </body>
 </html>
