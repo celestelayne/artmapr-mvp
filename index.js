@@ -7,11 +7,10 @@ var express = require("express"),
 	_ = require("underscore");
 
 var app = express();
-// var views = path.join(process.cwd(), "views");
-var views = path.join(__dirname, "views");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("bower_components"));
+app.use(express.static("node_modules"));
 app.use(express.static("public"));
 
 app.use(session({
@@ -19,6 +18,8 @@ app.use(session({
 	resave: false,
 	saveUninitialized: true 
 }));
+
+app.set("view engine", "ejs");
 
 // Login Helpers
 var loginHelpers = function (req, res, next) {
@@ -43,6 +44,8 @@ var loginHelpers = function (req, res, next) {
 };
 
 app.use(loginHelpers);
+
+var views = path.join(__dirname, "views");
 
 /* GET Home Page */
 app.get("/", function (req, res){
@@ -70,9 +73,10 @@ app.get("/logout", function (req, res){
 
 /* GET Profile Page */
 app.get("/profile", function (req, res){
+	var profilePath = path.join(views, "profile.html");
 	req.currentUser(function (err, user){
 		if (!err) {
-			res.send();		
+			res.send(user.email);		
 		} else {
 			res.redirect("/login");
 		}
@@ -105,18 +109,31 @@ app.get("/arts", function (req, res){
 	});
 });
 
+app.post("/users", function (req, res){
+	var newUser = req.body.user;
+	db.User.createSecure(newUser, function (err, user){
+		if (user) {
+			req.login(user);
+			res.redirect("/");
+		} else {
+			res.redirect("/signup")
+		}
+	});
+});
+
 // User submits sign-up form
 app.post("/signup", function (req, res){
 // grabs user from params
 	var newUser = req.body.user;
 // Create new user
 	db.User.createSecure(newUser, function (err, user){
-		if (user) {
+		res.send(user)
+/*		if (user) {
 			req.login(user);
-			res.redirect("/profile");
+			res.redirect("/");
 		} else {
-			res.redirect("/signup");
-		}
+			res.redirect("/login");
+		}*/
 	});
 });
 
@@ -124,11 +141,10 @@ app.post("/login", function (req, res){
 	var user = req.body.user;
 
 	db.User.authenticate(user, function (err, user){
-		console.log(user);
-		console.log(err);
+
 		if (!err) {
 			req.login(user);
-			res.redirect("/profile");
+			res.redirect("/login");
 		} else {
 			res.redirect("/login");
 		}

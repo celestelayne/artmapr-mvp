@@ -44,4 +44,4 @@ var ArtSchema = new mongoose.Schema({
 var Art = mongoose.model("Art", ArtSchema);
 
 // Interact with the loaded models
-module.exports.Art = Art;
+module.exports = Art;

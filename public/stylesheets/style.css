@@ -69,6 +69,8 @@
     padding-right: 0px;
   }
 
+/* NAVIGATION BAR */
+
   .navbar-brand>img {
   display: block;
   -webkit-box-shadow: 15px 15px 100px -15px rgba(20,20,20,1);
@@ -111,47 +113,60 @@
     color:#fff;
   }*/
 
-  article {
+/*  article {
     background-color: green;
+  }*/
+
+  .navbar-right {
+    text-align: center;
+    line-height: 55px;
+  }
+
+  #login-button  {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+/*    margin: auto;*/
+    width: 40%;
+    border: 2px solid #F2F2F2;
+    border-radius: 0;
+    background-color: transparent;
+    color: #F2F2F2;
+    font-size: 18px;
+    text-transform: uppercase;
+    z-index: 5;
   }
 
   #signup-button  {
     display: inline-block;
-    margin: auto;
+    vertical-align: middle;
+    margin-left: 5px;
+    /*margin: auto;*/
     width: 40%;
+    border: 2px solid #F2F2F2;
+    border-radius: 0;
+    background-color: transparent;
+    color: #F2F2F2;
+    font-size: 18px;
+    text-transform: uppercase;
     z-index: 5;
   }
 
-/*   #login-button  {
-    display: inline-block;
-    margin-right: 20px;
-    margin: auto;
-    width: 40%;
-    z-index: 5;
-  }*/
-
-  a.btn.btn-outlined.btn-theme.navbar-right {
-  width: 40%;
-  height: 40px;
-  margin-right: 40px;
-  border: 2px solid #F2F2F2;
-  background-color: transparent;
-  color: #F2F2F2;
-  /*opacity: 0.5;*/
-  font-size: 18px;
-  border-radius: 0;
-  margin-top: 2%;
-  }
-
-  a.btn.btn-outlined.btn-theme.navbar-right:hover,
-  a.btn.btn-outlined.btn-theme.navbar-right:active {
+  #login-button:hover,
+  #login-button:active {
     color: #FFF;
     background: #F2F2F2;
     border-color: #F2F2F2;
 }
 
-  /*Login Page CSS*/
+  #signup-button:hover,
+  #signup-button:active {
+    color: #FFF;
+    background: #F2F2F2;
+    border-color: #F2F2F2;
+}
 
+/*  LOGIN PAGE */
 
   .img-responsive {
     display: block;
@@ -202,7 +217,7 @@
   box-shadow: none;
   }
 
-  a.btn.btn-outlined.btn-theme {
+/*  a.btn.btn-outlined.btn-theme {
     display: block;
     margin: auto;
     width: 60%;
@@ -247,9 +262,13 @@
     color: #FFF;
     background: #5B3586;
     border-color: #5B3586;
-}
+}*/
 
-/*SidePanel*/
+/*  SIDEPANEL  */
+
+  #sidepanel {
+    padding-top: 70px;
+  }
 
   .context.subheader {
     margin-top: 60px;
@@ -264,13 +283,13 @@
     border: 3px solid #555;
   }
 
-/*ArtMapr Cards*/
+/*  TEMPLATE CARDS  */
 
   article {
     background-color: #F2F2F2;
   }
 
-  article#artmapr-cards {
+  #artmapr-cards {
     color: #333;
     background-color: #F2F2F2;
     border-color: #F2F2F2; 

@@ -64,7 +64,11 @@ userSchema.statics.authenticate = function(params, callback){
 		email: params.email
 	},
 	function (err, user){
-		user.checkPassword(params.password, callback);
+		if (user === null) {
+			return callback("Invalid User", null);
+		} else {
+			user.checkPassword(params.password, callback);			
+		}
 	});
 };
 
@@ -78,7 +82,7 @@ userSchema.methods.checkPassword = function (password, callback){
 				callback("Uh Oh", null)
 			}
 		});
-};
+	};
 
 var User = mongoose.model("User", userSchema);
 
