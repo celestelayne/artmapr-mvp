@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	
+
 	<title>Welcome to ArtMapr</title>
 
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
-	
+
 	<!-- MapBox CSS/JS -->
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 
@@ -36,7 +36,7 @@
 
 <body>
 
-	<nav class="navbar navbar-default navbar-fixed-top"> <!-- Main Layout Header -->
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="col-md-8">
 		<a class="navbar-brand" href="/">
         	<img alt="ArtMapr Brand Logo" src="images/ArtMapr-Logo-05.png" width="80px">
@@ -46,14 +46,15 @@
     		<a href="/login" id="login-button" class="btn btn-outlined btn-theme">Log In</a>
     		<a href="/signup" id="signup-button" class="active btn btn-outlined btn-theme">Sign Up</a>
     	</div>
-    	
 	</nav>
+
+	<% include partials/nav %>
 
 	<div class="container-fluid">
 		<div id="map" class="col-xs-12 col-sm-6 col-md-8"></div>
 		<!-- Geolocation Button -->
 		<!-- <a href='#' id='geolocate' class='ui-button'>Find me</a> -->
-		
+
 		<div id="sidepanel" class="col-xs-6 col-md-4">
 
 	        <div class="context subheader" style="border-bottom-color: transparent">
@@ -80,7 +81,7 @@
 				  <!-- <div class="panel-footer">
 				    <div class="btn-group btn-group-justified"></div>
 				  </div> -->
-  
+
 			</article>
 	    </div>
     </div>

@@ -23,13 +23,13 @@ var api_endpoint = "https://data.sfgov.org/resource/zfw6-95su.json?$select=artis
 // Add an empty feature layer to the map
 var artLayer = L.layerGroup().addTo(map);
 
-// Make AJAX call to backend GET request 
+// Make AJAX call to backend GET request
 var artgeo = $.getJSON(api_endpoint, function (results, status){
     results.shift();
-    console.log("RESULTs", results);
-    
+    // console.log("RESULTs", results);
+
     $.each(results, function (index, result){
-         console.dir(result);
+        //  console.dir(result);
          result.geometry = JSON.parse(result.geometry);
          L.mapbox.featureLayer({
             type: "Feature",
@@ -83,4 +83,4 @@ var artgeo = $.getJSON(api_endpoint, function (results, status){
         });
 });
 
-}); // closes jQuery ready function 
+}); // closes jQuery ready function
