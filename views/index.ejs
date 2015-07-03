@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ArtMapr</title>
+
+    	<!-- jQuery -->
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+    	<!-- Bootstrap and Bootcards CSS / JS -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    	<script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+
+    	<!-- MapBox CSS/JS -->
+    	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+
+    	<link rel="stylesheet" href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+
+    	<!-- ArtMapr CSS/JS -->
+    	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    	<script src="javascript/app.js"></script>
+
+    	<!-- Sidepanel CSS -->
+    	<link rel="stylesheet" href="stylesheets/light-theme.css">
+        <link rel="stylesheet" href="stylesheets/makeitresponsive.css">
+
+        <!-- Google Fonts -->
+    	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+    <div class="title">
+      <%= title %>
+    </div>
+    <ul>
+      <% for (var i = 0; i < users.length; i++) { %>
+        <li><%= user.first_name%></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
