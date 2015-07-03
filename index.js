@@ -1,12 +1,13 @@
 var express = require("express"),
 	bodyParser = require("body-parser"),
 	path = require("path"),
-	request = require("request"),
-	db = require("./models"),
-	session = require("express-session"),
-	_ = require("underscore");
+	request = require("request");
+var db = require("./models");
+var	session = require("express-session");
+var	_ = require("underscore");
 
 var app = express();
+var views = path.join(__dirname, "views");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("bower_components"));
@@ -16,13 +17,12 @@ app.use(express.static("public"));
 app.use(session({
 	secret: 'alloo pie',
 	resave: false,
-	saveUninitialized: true 
+	saveUninitialized: true
 }));
-
-app.set("view engine", "ejs");
 
 // Login Helpers
 var loginHelpers = function (req, res, next) {
+
 	req.login = function (user) {
 		req.session.userId = user._id;
 		req.user = user;
@@ -45,7 +45,7 @@ var loginHelpers = function (req, res, next) {
 
 app.use(loginHelpers);
 
-var views = path.join(__dirname, "views");
+app.set("view engine", "ejs");
 
 /* GET Home Page */
 app.get("/", function (req, res){
@@ -53,30 +53,73 @@ app.get("/", function (req, res){
 	res.sendFile(homePath);
 });
 
-/* GET Sign Up Page */
+app.get('/users', function(req, res){
+	db.User.find({}, function(err,users){
+		res.send(users);
+	});
+});
+
+/* GET Sign Up New User */
 app.get("/signup", function (req, res){
 	var signupPath = path.join(views, "signup.html");
 	res.sendFile(signupPath);
 });
 
-/* GET Login Page */
+/* POST is where User submits to database? */
+app.post("/users", function (req, res){
+	// Get the user from the params
+	var newUser = req.body.user;
+	// Create the new user here
+
+	db.User.createSecure(newUser, function (err, user){
+			// console.log(newUser);
+		if (user) {
+			req.login(user);
+			res.redirect("/profile");
+		} else {
+			res.redirect("/signup");
+		}
+		// res.send(user);
+	});
+});
+
+/* GET Login User */
 app.get("/login", function (req, res){
 	var loginPath = path.join(views, "login.html");
 	res.sendFile(loginPath);
 });
 
-/* GET Logout Page */
+/* GET Logout User */
 app.get("/logout", function (req, res){
 	req.logout();
 	res.redirect("/");
 });
 
-/* GET Profile Page */
+/* GET Send User to Profile if Logged In */
 app.get("/profile", function (req, res){
-	var profilePath = path.join(views, "profile.html");
+	// var profilePath = path.join(views, "profile.html");
+	// res.send("COMING SOON");
 	req.currentUser(function (err, user){
 		if (!err) {
-			res.send(user.email);		
+			res.send(user);
+		} else {
+			res.redirect("/login");
+		}
+		// res.send("coming soon");
+	});
+});
+
+
+
+app.post("/login", function (req, res){
+	var user = req.body.user;
+
+	db.User.authenticate(user, function (err, user){
+		// console.log(user);
+		// res.send("Logged In");
+		if (!err) {
+			req.login(user);
+			res.redirect("/profile");
 		} else {
 			res.redirect("/login");
 		}
@@ -100,7 +143,7 @@ app.get("/arts", function (req, res){
 			res.send("There was an error")
 		}
 			console.log("Socrata API response is back")
-			
+
 			var body = JSON.parse(apiRes.body);
 			// var coordinates = JSON.parse(body[3].geometry).coordinates.reverse();
 
@@ -109,49 +152,8 @@ app.get("/arts", function (req, res){
 	});
 });
 
-app.post("/users", function (req, res){
-	var newUser = req.body.user;
-	db.User.createSecure(newUser, function (err, user){
-		if (user) {
-			req.login(user);
-			res.redirect("/");
-		} else {
-			res.redirect("/signup")
-		}
-	});
-});
-
-// User submits sign-up form
-app.post("/signup", function (req, res){
-// grabs user from params
-	var newUser = req.body.user;
-// Create new user
-	db.User.createSecure(newUser, function (err, user){
-		res.send(user)
-/*		if (user) {
-			req.login(user);
-			res.redirect("/");
-		} else {
-			res.redirect("/login");
-		}*/
-	});
-});
-
-app.post("/login", function (req, res){
-	var user = req.body.user;
-
-	db.User.authenticate(user, function (err, user){
-
-		if (!err) {
-			req.login(user);
-			res.redirect("/login");
-		} else {
-			res.redirect("/login");
-		}
-	});
-});
+// SERVER
 
 app.listen(process.env.PORT || 3000, function (){
-
 	console.log("this still works");
 });

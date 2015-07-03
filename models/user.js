@@ -1,7 +1,5 @@
 // Load mongoose module
 var mongoose = require("mongoose");
-// Load bcrypt module
-var bcrypt = require("bcrypt");
 
 var userSchema = new mongoose.Schema({
 	email: {
@@ -30,6 +28,9 @@ var userSchema = new mongoose.Schema({
 	}
 });
 
+// Load bcrypt module
+var bcrypt = require("bcrypt");
+
 var confirm = function (pswrd, pswrdCon) {
 	return pswrd === pswrdCon;
 };
@@ -41,45 +42,50 @@ userSchema.statics.createSecure = function (params, callback) {
 	isConfirmed = confirm(params.password, params.password_confirmation);
 
 	if (!isConfirmed) {
-		return callback("Passwords should match", null);
+		return callback(console.log("Passwords should match"), null);
 	}
-
+	// saves the user email and hashes the password
 	var that = this;
 
 	bcrypt.hash(params.password, 12, function (err, hash) {
 		params.passwordDigest = hash;
-		that.create(params, callback);
+		console.log(params);
+		that.create(params, function(err, user){
+			if (user)
+			callback (null, user);
+			else {
+				callback ("Signup failed", null);
+			}
+		});
 	});
-
 };
 
-/*userSchema.statics.encryptPassword = function (password){
-	var hash = bcrypt.hashSync(password, salt);
-	return hash;
-};*/
-
 // Authenticate User
-userSchema.statics.authenticate = function(params, callback){
+userSchema.statics.authenticate = function(params, cb){
+	// find just one user with the email
 	this.findOne({
 		email: params.email
 	},
 	function (err, user){
-		if (user === null) {
-			return callback("Invalid User", null);
+		// var user = this;
+		console.log(user);
+		if(user){
+			user.checkPswrd(params.password, cb);
 		} else {
-			user.checkPassword(params.password, callback);			
+			cb("Login failed - no user found");
 		}
 	});
 };
 
-userSchema.methods.checkPassword = function (password, callback){
+userSchema.methods.checkPswrd = function (password, callback){
 	var user = this;
 	bcrypt.compare(password,
 		this.passwordDigest, function (err, isMatch){
 			if (isMatch) {
+				console.log("MATCHED");
 				callback(null, user);
 			} else {
-				callback("Uh Oh", null)
+				callback("Login failed - password incorrect", null)
 			}
 		});
 	};
