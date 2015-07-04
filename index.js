@@ -47,6 +47,8 @@ app.use(loginHelpers);
 
 app.set("view engine", "ejs");
 
+// ART ROUTES
+
 /* GET Home Page */
 app.get("/", function (req, res){
 	var homePath = path.join(views, "home.html");
@@ -61,8 +63,9 @@ app.get('/users', function(req, res){
 
 /* GET Sign Up New User */
 app.get("/signup", function (req, res){
-	var signupPath = path.join(views, "signup.html");
-	res.sendFile(signupPath);
+	// var signupPath = path.join(views, "signup.html");
+	// res.sendFile(signupPath);
+	res.render('signup');
 });
 
 /* POST is where User submits to database? */
@@ -86,7 +89,8 @@ app.post("/users", function (req, res){
 /* GET Login User */
 app.get("/login", function (req, res){
 	var loginPath = path.join(views, "login.html");
-	res.sendFile(loginPath);
+	// res.sendFile(loginPath);
+	res.render('login');
 });
 
 /* GET Logout User */
@@ -101,7 +105,8 @@ app.get("/profile", function (req, res){
 	// res.send("COMING SOON");
 	req.currentUser(function (err, user){
 		if (!err) {
-			res.send(user);
+			// res.send(user);
+			res.render('profile');
 		} else {
 			res.redirect("/login");
 		}
@@ -125,6 +130,8 @@ app.post("/login", function (req, res){
 		}
 	});
 });
+
+// ART ROUTES
 
 /* GET JSON data from Socrata 	*/
 app.get("/arts", function (req, res){
