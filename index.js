@@ -63,8 +63,9 @@ app.get('/users', function(req, res){
 
 /* GET Sign Up New User */
 app.get("/signup", function (req, res){
-	var signupPath = path.join(views, "signup.html");
-	res.sendFile(signupPath);
+	// var signupPath = path.join(views, "signup.html");
+	// res.sendFile(signupPath);
+	res.render('signup');
 });
 
 /* POST is where User submits to database? */
