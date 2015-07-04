@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
+	<head>
+		<% include partials/header %>
+	</head>
 
-	<title>ArtMapr Login</title>
+	<body class="container-fluid">
 
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<header class="row">
+		<% include partials/nav %>
+	</header>
 
-	<!-- jQuery -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-
-	<!-- Bootstrap CSS / JS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-	<!-- ArtMapr CSS/JS -->
-	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-	<script src="javascript/app.js"></script>
-
-	<!-- Google Fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-</head>
-
-<body>
-
-	<div class="container login-container">
-		<div class="row">
+	<!-- <div class="container login-container"> -->
+		<!-- <div class="row"> -->
   			<div class="col-md-4 col-md-offset-4">
   				<div class="panel panel-default">
   					<div class="panel-logo"> <!-- ArtMapr Logo -->
@@ -56,10 +41,14 @@
 				  		</fieldset>
 						</form>
 					</div>
-  				</div>	
+  				</div>
   			</div>
-		</div>
-	</div>
+		<!-- </div> -->
+	<!-- </div> -->
 
-</body>
+		<footer class="row">
+				<% include partials/footer %>
+		</footer>
+
+	</body>
 </html>
