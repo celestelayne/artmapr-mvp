@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/header %>
+	</head>
+
+	<body class="container-fluid">
+
+	<header class="row">
+		<% include partials/nav %>
+	</header>
+
+  			<div class="col-md-4 col-md-offset-4">
+  				<div class="panel panel-default" id="login-panel">
+  					<div class="panel-logo"> <!-- ArtMapr Logo -->
+  						<img src="images/ArtMapr-Logo-05.png" width="100px" class="img-responsive" alt="Responsive image">
+  						<aside>Log in to ArtMapr</aside>
+  					</div>
+
+			 		<div class="panel-body">
+			  			<form method="POST" action="/login" accept-charset="UTF-8" role="form">
+			  			<fieldset>
+							<div class="form-group">
+								<input class="form-control" type="text" name="user[email]" placeholder="Email">
+							</div>
+							<div class="form-group has-feedback">
+								<input class="form-control" type="password" name="user[password]" placeholder="Password" value="">
+							</div>
+							<div class="checkbox">
+			    	    	<label>
+			    	    		<input name="remember" type="checkbox" value="Remember Me" checked	> Remember Me
+			    	    	</label>
+			    	    	</div>
+			    	    	<div class="login-page-button">
+			    	    		<button class="btn btn-outlined btn-theme" type="submit">Log In</button>
+			    	    	</div>
+				  		</fieldset>
+						</form>
+					</div>
+					
+  				</div>
+  			</div>
+
+		<footer class="row">
+				<% include partials/footer %>
+		</footer>
+
+	</body>
+</html>

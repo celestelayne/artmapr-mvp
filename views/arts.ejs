@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/header %>
+	</head>
+
+	<body class="container-fluid">
+
+	<header class="row">
+		<% include partials/nav %>
+	</header>
+
+			<div class="row col-md-4" id="main">
+        <table class="table">
+          <thead>
+            <th>Artist Name</th>
+            <th>Title</th>
+            <th>Medium</th>
+          </thead>
+          <tbody>
+            <% for (var i = 0; i < allArts.length; i++) { %>
+            <tr>
+              <td><%= allArts[i].artist %></td>
+              <td><%= allArts[i].title %></td>
+              <td><%= allArts[i].medium %></td>
+							<td><%= allArts[i].location_1 %></td>
+							<td><a href="<%= allArts[i].id %>/edit" class="btn btn-primary">Edit Art</a></td>
+            </tr>
+            <% }; %>
+          </tbody>
+        </table>
+
+			</div>
+
+		<footer class="row">
+				<% include partials/footer %>
+		</footer>
+
+	</body>
+</html>
