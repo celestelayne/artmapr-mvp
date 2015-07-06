@@ -1,7 +1,6 @@
 // Mongoose import
 var mongoose = require("mongoose");
 
-
 // Mongoose Schema definition
 var ArtSchema = new mongoose.Schema({
 	id: {
@@ -37,7 +36,7 @@ var ArtSchema = new mongoose.Schema({
 	location_1: {
 		type: String,
 		default: ""
-	}, 
+	},
 });
 
 // Mongoose model definition
