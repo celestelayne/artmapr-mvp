@@ -254,21 +254,40 @@ footer {
 
 /*  TEMPLATE CARDS  */
 
-  article {
+  /*article {
     background-color: #F2F2F2;
-  }
+  }*/
 
-  #artmapr-cards {
+  .artcard {
+    width: 50%;
+    height: 250px;
     color: #333;
     background-color: #F2F2F2;
     border-color: #F2F2F2;
   }
 
-  div.panel-heading {
-    background-color: transparent;
-    border-color: none;
+  .circle {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: red;
   }
 
-  .panel-body > h5 > span {
-    font-weight: bold;
+  .bookmark-icon {
+    color: #F2F2F2;
   }
+
+  .heart-icon {
+    color: #F2F2F2;
+  }
+
+  .comment-icon {
+    color: #F2F2F2;    
+  }
+
+/*  PROFILE PAGE  */
+
+.profile-panel {
+  background-color: yellow;
+  margin-top: 60px;
+}

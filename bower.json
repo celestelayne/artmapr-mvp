@@ -17,6 +17,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "underscore": "~1.8.3",
-    "bootcards": "~1.1.2"
+    "bootstrap": "",
+    "font-awesome": "~4.3.0"
   }
 }
