@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include ../partials/header %>
+	</head>
+
+	<body class="container-fluid">
+
+	<header class="row">
+		<% include ../partials/nav %>
+	</header>
+
+			<div class="row col-md-10 col-md-offset-1" id="main">
+        <form class="form-horizontal" method="POST" action="/arts/new"></form>
+
+				<div class="form-group">
+					<label for="inputArtist" class="col-sm-2 control-label">Artist Name</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="name" id="artistName" placeholder="Name of artist">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="inputTitle" class="col-sm-2 control-label">Title</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="name" id="artTitle" placeholder="Title of art">
+					</div>
+				</div>
+
+			</div>
+artist, medium, title, location_1
+		<footer class="row">
+				<% include ../partials/footer %>
+		</footer>
+
+	</body>
+</html>

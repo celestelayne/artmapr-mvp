@@ -130,16 +130,27 @@ app.post("/login", function (req, res){
 
 /* GET JSON data from Socrata 	*/
 app.get("/arts", function (req, res){
-	request("https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, location_1, created_at, title, geometry, medium&$limit=50",
-		function(err, apiRes, apiBody){
-		res.render('arts', {
-			artmaps: JSON.parse(apiRes.body)
-		});
+	console.log("Requesting data from socrata...")
+	request.get({uri: "https://data.sfgov.org/resource/zfw6-95su.json"},
+	function(error, apiRes, apiBody){
+		if (!error && apiRes.statusCode == 200) {
+			console.log("uh oh! Got an error from Socrata")
+		}
+			console.log("Socrata API response is back")
+
+			var artdata = JSON.parse(apiBody);
+
+			console.log("Grabbing the civic art data")
+			// res.send(artdata)
+			res.render('arts', {
+				allArts: JSON.parse(apiBody)
+			});
 	});
 });
 
+
 app.get("/arts/new", function(req,res){
-	res.render('new');
+	res.render('arts/new');
 });
 
 app.post("/arts/new", function(req, res){
@@ -158,6 +169,27 @@ app.post("/arts/new", function(req, res){
 	});
 });
 
+app.get("/arts/:id/edit", function(req, res){
+	request("https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, location_1, created_at, title, geometry, medium&$limit=50" + req.params.id,
+		function(error, response, body){
+			res.render('arts/edit', {
+				artInfo: JSON.parse(body)
+			});
+		});
+});
+
+app.put("/arts/:id", function(req, res){
+	request({
+		method: "PUT",
+		uri: "https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, location_1, created_at, title, geometry, medium&$limit=50",
+		formData: {
+			title: req.body.title,
+			medium: req.body.medium,
+			artist: req.body.artist,
+			location_1: req.body.location_1
+		}
+	});
+});
 
 // SERVER
 
