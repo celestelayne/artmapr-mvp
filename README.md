@@ -16,13 +16,12 @@ ArtMapr uses a number of tools and frameworks to work properly:
 * [Sublime Text] - a cross-platform text and source code editor
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [jQuery] - duh
+* [Express] - fast node.js network app framework
+* [jQuery] - 
 
 
 ### Todo's
 
-* Render cards using Underscore templating
+* Render cards using ejs templating
 * Toggle layers using filter
 * Cache favorites in UserSchema and reference ArtSchema
-

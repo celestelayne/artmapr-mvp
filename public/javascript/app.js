@@ -6,7 +6,7 @@ var map = L.mapbox.map('map', 'clayne.i6afai85', {
     scrollWheelZoom: false
     })
     .setView([37.794, -122.401], 14);
-
+// Adds zoom control
 new L.Control.Zoom({ position: 'bottomleft' }).addTo(map);
 
 /*var featureLayer = L.mapbox.featureLayer.setGeoJSON().addTo(map);
@@ -19,6 +19,7 @@ new L.Control.Zoom({ position: 'bottomleft' }).addTo(map);
         'marker-size': 'large'
     }));
 });*/
+// console.log(artmaps)
 var api_endpoint = "https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, created_at, title, geometry, medium&$limit=50";
 // Add an empty feature layer to the map
 var artLayer = L.layerGroup().addTo(map);
