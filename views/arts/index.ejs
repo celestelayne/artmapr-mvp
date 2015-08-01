@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<% include partials/header %>
+		<% include ../partials/header %>
 	</head>
 
 	<body class="container-fluid">
 
 	<header class="row">
-		<% include partials/nav %>
+		<% include ../partials/nav %>
 	</header>
 
-			<div class="row col-md-4" id="main">
+			<div class="row col-md-10 col-md-offset-1" id="arts-main">
         <table class="table">
           <thead>
+						<th class="hide">ID</th>
             <th>Artist Name</th>
             <th>Title</th>
             <th>Medium</th>
+						<th>Circa Year</th>
           </thead>
           <tbody>
             <% for (var i = 0; i < allArts.length; i++) { %>
             <tr>
+							<td class="hide"><%= allArts[i].id %></td>
               <td><%= allArts[i].artist %></td>
               <td><%= allArts[i].title %></td>
               <td><%= allArts[i].medium %></td>
-							<td><%= allArts[i].location_1 %></td>
-							<td><a href="<%= allArts[i].id %>/edit" class="btn btn-primary">Edit Art</a></td>
+							<td><%= allArts[i].created_at %></td>
+							<td><a href=" /arts/<%= allArts[i].id %>/post" class="btn btn-danger edit-btn">Add</a></td>
+							<td><a href=" /arts/<%= allArts[i].id %>/edit" class="btn btn-primary edit-btn">Edit</a></td>
+							<td><a href=" /arts/<%= allArts[i].id %>/delete" class="btn btn-primary edit-btn">Delete</a></td>
             </tr>
             <% }; %>
           </tbody>
@@ -33,7 +38,7 @@
 			</div>
 
 		<footer class="row">
-				<% include partials/footer %>
+				<% include ../partials/footer %>
 		</footer>
 
 	</body>

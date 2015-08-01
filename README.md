@@ -17,11 +17,23 @@ ArtMapr uses a number of tools and frameworks to work properly:
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [node.js] - evented I/O for the backend
 * [Express] - fast node.js network app framework
-* [jQuery] - 
+* [jQuery] -
 
 
 ### Todo's
 
 * Render cards using ejs templating
+* Art profile Page
+* Image upload
 * Toggle layers using filter
 * Cache favorites in UserSchema and reference ArtSchema
+
+
+Explanations of the technologies used
+A couple paragraphs about the general approach you took
+Installation instructions for any dependencies
+Link to your user stories – who are your users, what do they want, and why?
+Link to your wireframes – sketches of major views / interfaces in your application
+Link to some entity relationship diagrams – model out your data relationships before coding
+Link to your pitch deck – documentation of your wireframes, user stories, and proposed architecture
+Descriptions of any unsolved problems or major hurdles overcome

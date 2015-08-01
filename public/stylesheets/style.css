@@ -1,7 +1,25 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700);
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic);
+
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+  /*--------------------
+  [Table of Contents]
+
+    1.	Body
+  	2.	Header | #header
+  	3.	Content | #content
+  	2.	Footer | #footer
+
+  --------------------*/
+
   body {
   	margin:0;
   	padding:0;
     font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
   }
 
 /* NAVIGATION BAR */
@@ -27,30 +45,14 @@
   	width:100%;
   }
 
-/*Find Me Button
-  .ui-button {
-  background:#3887BE;
-  color:#FFF;
-  display:block;
-  position:absolute;
-  top:50%;left:50%;
-  width:160px;
-  margin:-20px 0 0 -80px;
-  z-index:100;
-  text-align:center;
-  padding:10px;
-  border:1px solid rgba(0,0,0,0.4);
-  border-radius:3px;
+  .leaflet-popup-content{
+    background-color: #5B3586;
+    border: none;
   }
 
-  .ui-button:hover {
-    background:#3074a4;
-    color:#fff;
-  }*/
-
-/*  article {
-    background-color: green;
-  }*/
+  .marker-title, .marker-description, .marker-medium {
+    color: #f2f2f2;
+  }
 
   .navbar-right {
     text-align: center;
@@ -67,7 +69,7 @@
     border-radius: 0;
     background-color: transparent;
     color: #F2F2F2;
-    font-size: 18px;
+    /*font-size: 18px;*/
     text-transform: uppercase;
     z-index: 5;
   }
@@ -82,45 +84,43 @@
     border-radius: 0;
     background-color: transparent;
     color: #F2F2F2;
-    font-size: 18px;
+    /*font-size: 18px;*/
     text-transform: uppercase;
     z-index: 5;
   }
 
-  #login-button:hover,
-  #login-button:active {
-    color: #FFF;
-    background: #F2F2F2;
-    border-color: #F2F2F2;
-}
+    #login-button:hover,
+    #login-button:active {
+      color: #FFF;
+      background: #F2F2F2;
+      border-color: #F2F2F2;
+  }
 
-  #signup-button:hover,
-  #signup-button:active {
-    color: #FFF;
-    background: #F2F2F2;
-    border-color: #F2F2F2;
-}
+    #signup-button:hover,
+    #signup-button:active {
+      color: #FFF;
+      background: #F2F2F2;
+      border-color: #F2F2F2;
+  }
 
 /* FOOTER */
 
-footer {
-  height: 60px;
-  background-color: #5B3586;
-  position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
+  footer {
+    height: 60px;
+    background-color: #5B3586;
+    color: #f2f2f2;
+    position: fixed;
+    text-align: center;
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+  }
+
+  footer p{
+    margin-top: 20px;
+  }
 
 /*  LOGIN & SIGNUP PAGE */
-
-  #login-panel {
-    margin-top: 100px;
-  }
-
-  #signup-panel {
-    margin-top: 80px;
-  }
 
   .img-responsive {
     display: block;
@@ -132,7 +132,7 @@ footer {
     font-family: 'Libre Baskerville', serif;
     text-align: center;
     margin: 20px;
-    font-size: 20px;
+    /*font-size: 20px;*/
     line-height: 1.3;
   }
 
@@ -192,46 +192,46 @@ footer {
   }
 
   .btn {
-  letter-spacing: 1px;
-  text-decoration: none;
-  background: none;
-    -moz-user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 0;
-    cursor: pointer;
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
-    white-space: nowrap;
-  font-size:14px;
-  line-height:20px;
-  font-weight:700;
-  text-transform:uppercase;
-  border: 3px solid;
-  padding:8px 20px;
-  width: 40%;
-}
-
-.btn-outlined {
-    border-radius: 0;
-    -webkit-transition: all 0.3s;
-       -moz-transition: all 0.3s;
-            transition: all 0.3s;
-}
-
-.btn-outlined.btn-theme {
+    letter-spacing: 1px;
+    text-decoration: none;
     background: none;
-    color: #5B3586;;
-    border-color: #5B3586;;
-}
+      -moz-user-select: none;
+      background-image: none;
+      border: 1px solid transparent;
+      border-radius: 0;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+      white-space: nowrap;
+    /*font-size:14px;*/
+    line-height:20px;
+    font-weight:700;
+    text-transform:uppercase;
+    border: 3px solid;
+    padding:8px 20px;
+    width: 40%;
+  }
 
-.btn-outlined.btn-theme:hover,
-.btn-outlined.btn-theme:active {
-    color: #FFF;
-    background: #5B3586;
-    border-color: #5B3586;
-}
+  .btn-outlined {
+      border-radius: 0;
+      -webkit-transition: all 0.3s;
+         -moz-transition: all 0.3s;
+              transition: all 0.3s;
+  }
+
+  .btn-outlined.btn-theme {
+      background: none;
+      color: #5B3586;;
+      border-color: #5B3586;;
+  }
+
+  .btn-outlined.btn-theme:hover,
+  .btn-outlined.btn-theme:active {
+      color: #FFF;
+      background: #5B3586;
+      border-color: #5B3586;
+  }
 
 /*  SIDEPANEL  */
 
@@ -253,10 +253,6 @@ footer {
   }
 
 /*  TEMPLATE CARDS  */
-
-  /*article {
-    background-color: #F2F2F2;
-  }*/
 
   .artcard {
     width: 50%;
@@ -282,12 +278,81 @@ footer {
   }
 
   .comment-icon {
-    color: #F2F2F2;    
+    color: #F2F2F2;
   }
 
-/*  PROFILE PAGE  */
+  /*  PROFILE PAGE  */
 
-.profile-panel {
-  background-color: yellow;
-  margin-top: 60px;
-}
+  .profile-panel {
+    background-color: yellow;
+  }
+
+  /*  ARTS INDEX PAGE  */
+  #arts-main {
+    margin-top: 60px;
+  }
+
+  .edit-btn {
+    width: 100%;
+    color: #5B3586;
+    border: 2px solid #5B3586;
+  }
+
+  .edit-btn:hover {
+    width: 100%;
+    background-color: #5B3586;
+    border: 2px solid #f2f2f2;
+  }
+
+  /*  ABOUT PAGE  */
+
+  .about-image {
+    width: 33.33%;
+    height: 350px;
+    border: 1px solid #F2F2F2;
+    position: relative;
+    display: inline-block;
+    float:left;
+    list-style: none;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  .about-text {
+    width: 66.66%;
+    height: 350px;
+    background-color: #5B3586;
+    position: relative;
+    display: inline-block;
+    float:left;
+    list-style: none;
+    border: 1px solid #F2F2F2;
+    padding: 20px;
+
+    h4 {
+      color: $navColor;
+      line-height: 1.5;
+      letter-spacing: .05em;
+    }
+
+    a {
+      color: $navColor;
+      text-transform: uppercase;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  .hide {
+    display: none;
+  }
+
+  #soma {
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    /*color: #DDFFD9;*/
+  }
