@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include ../partials/header %>
+	</head>
+
+	<body class="container-fluid">
+
+	<header class="row">
+		<% include ../partials/nav %>
+	</header>
+
+  		<div class="col-md-4 col-md-offset-4">
+				<div class="panel panel-default" id="signup-panel">
+  					<div class="panel-heading">
+  						<div class="panel-title">Art Profile</div>
+  					</div>
+
+						<div class="panel-body">
+						<form method="POST" action="/arts/<%= artInfo.id %>?_method=put/edit">
+						<fieldset>
+							<div class="form-group"> <!-- First Name -->
+								<input class="form-control" type="text" name="artist" value="<%= artInfo.artist %>" placeholder="Artist Name" required="required" autofocus="autofocus">
+							</div>
+							<div class="form-group"> <!-- Last Name -->
+								<input class="form-control" type="text" name="title" value="<%= artInfo.title %>" placeholder="Title" required="required" autofocus="autofocus">
+							</div>
+						  <div class="form-group">
+						  	<input class="form-control" type="text" name="medium" value="<%= artInfo.medium %>" placeholder="Email">
+						  </div>
+							<form class="" action="/arts/<%= artInfo.id %>?_method=put/edit" method="post">
+								<button type="submit" class="btn btn-outlined edit-btn" name="button">Save</button>
+							</form>
+
+				  </fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+<footer class="row">
+		<% include ../partials/footer %>
+</footer>
+
+</body>
+</html>
