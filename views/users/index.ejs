@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include ../partials/header %>
+	</head>
+
+	<body class="container-fluid">
+
+	<header class="row">
+		<% include ../partials/nav %>
+	</header>
+
+			<div class="row col-md-10 col-md-offset-1" id="users-main">
+        <table class="table">
+          <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </thead>
+          <tbody>
+            <% for (var i = 0; i < allUsers.length; i++) { %>
+            <tr>
+              <td><%= allUsers[i].first_name %></td>
+              <td><%= allUsers[i].last_name %></td>
+              <td><%= allUsers[i].email %></td>
+							<td><a href="/users/<%= allUsers[i].id %>/edit" class="btn btn-primary edit-btn">Edit</a></td>
+            </tr>
+            <% }; %>
+          </tbody>
+        </table>
+
+			</div>
+
+		<footer class="row">
+				<% include ../partials/footer %>
+		</footer>
+
+	</body>
+</html>

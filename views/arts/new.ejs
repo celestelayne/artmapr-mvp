@@ -10,25 +10,39 @@
 		<% include ../partials/nav %>
 	</header>
 
-			<div class="row col-md-10 col-md-offset-1" id="main">
-        <form class="form-horizontal" method="POST" action="/arts/new"></form>
-
-				<div class="form-group">
-					<label for="inputArtist" class="col-sm-2 control-label">Artist Name</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="name" id="artistName" placeholder="Name of artist">
+			<div class="row col-md-6 col-md-offset-3" id="main">
+        <form class="form-horizontal" method="POST" action="/arts/new">
+					<fieldset>
+					<div class="form-group">
+						<label for="inputArtist" class="col-sm-2 control-label">Artist Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="name" id="artistName" placeholder="Name of artist">
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label for="inputTitle" class="col-sm-2 control-label">Title</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="name" id="artTitle" placeholder="Title of art">
+					<div class="form-group">
+						<label for="inputTitle" class="col-sm-2 control-label">Title</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="name" id="artTitle" placeholder="Title of art">
+						</div>
 					</div>
-				</div>
 
+					<div class="form-group">
+						<label for="inputMedium" class="col-sm-2 control-label">Medium</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="name" id="artMedium" placeholder="Medium of art">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default">Add Art</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
 			</div>
-artist, medium, title, location_1
+
 		<footer class="row">
 				<% include ../partials/footer %>
 		</footer>
