@@ -2,11 +2,9 @@
 		bodyParser = require("body-parser"),
 		path = require("path"),
 		request = require("request");
-	var fs = require('fs');
-	var https = require('https');
+
 	var db = require("./models");
 	var	session = require("express-session");
-	var gravatar = require('gravatar');
 
 	var app = express();
 	var views = path.join(__dirname, "views");
@@ -51,9 +49,7 @@
 	app.use(methodOverride("_method"));
 	app.set("view engine", "ejs");
 
-	// app.locals.appdata = require('./sf_data.json', 'utf8');
-
-	// USER ROUTES
+	// HOME ROUTE
 
 	/* GET Home Page with MapBox map */
 	app.get("/", function (req, res){
@@ -78,36 +74,31 @@
 	// USER ROUTES
 	/* GET Sign Up New User */
 	app.get("/users/signup", function (req, res){
-		res.render('users/signup',{
-			firstname: req.body.first_name,
-			lastname: req.body.last_name,
-			email: req.body.email,
-			password: req.body.password,
-			password: req.body.password_confirmation
-		});
+		res.render("users/signup");
 	});
 
 	/* GET Login User */
-	app.get("/login", function (req, res){
-		// var loginPath = path.join(views, "login.html");
+	app.get("/users/login", function (req, res){
 		res.render('users/login');
 	});
 
 	//
 	app.post("/login", function (req, res){
 		var user = req.body.user;
+		console.log(user);
 		db.User.authenticate(user, function (err, user){
-			if (!err) {
+			if (user) {
 				req.login(user);
-				res.redirect("/users/profile");
+				res.redirect("users/profile");
 			} else {
-				res.redirect("/users/login");
+				res.redirect("users/login");
 			}
 		});
 	});
 
 	/* GET Logout User */
 	app.get("/logout", function (req, res){
+		console.log("Logging out")
 		req.logout();
 		res.redirect("/");
 	});
@@ -115,24 +106,15 @@
 	// Get all users
 	app.get('/users/index', function(req, res){
 		db.User.find({}, function(err, users){
-			res.render('users/index', {
-				allUsers: users
-			});
 			console.log(users);
-		});
-	});
-
-	// Show specific user data
-	app.get("/users/edit/:id", function(req, res){
-		db.User.findById(req.params.id).success(function(err, user){
-			res.render("users/edit", {
-				userInfo: user
+			res.render('users/index', {
+			allUsers: users
 			});
 		});
 	});
 
 	// Process user update
-	app.put("/users/edit/:id", function(req, res){
+	app.put("/users/:id", function(req, res){
 		db.User.findById(req.params.id).success(function(err, user){
 			user.updateAttributes({
 				first_name: req.body.first_name,
@@ -145,36 +127,56 @@
 	});
 
 	/* POST is where User submits to database? */
-	app.post("/users", function (req, res){
+	app.post("/signup", function (req, res){
 		// Get the user from the params
 		var newUser = req.body.user;
 		// Create the new user here
-
-		db.User.createSecure(newUser, function (user, err){
-				// console.log(newUser);
+		console.log(newUser);
+		db.User.createSecure(newUser, function (err, user){
 			if (user) {
 				req.login(user);
 				res.redirect("users/profile");
 			} else {
-				res.redirect("users/signup");
+				res.redirect("/");
 			}
 		});
 	});
 
 	/* GET Send User to Profile if Logged In */
 	app.get("/users/profile", function (req, res){
-		req.currentUser(function (err, user){
-			if (!err) {
-				res.send(user);
-				res.render('users/profile');
-			} else {
-				res.redirect("users/login");
-			}
-		});
-	});
+		if(!req.session.userId) {
+					res.redirect("/login");
+				} else {
+					db.User.findOne({
+						"_id": req.session.userId
+					}).done(function(err, user){
+						res.render("users/profile");
+						console.log(user);
+					})
+				}
+});
+		// Show specific user data
+	// 	app.get("/users/:id", function(req, res){
+	// 		if(!req.session.userId) {
+	// 			res.redirect("users/login");
+	// 		} else {
+	// 			db.User.findOne({
+	// 				"_id": req.session.userId
+	// 			}).success(function(err, user){
+	// 				res.send(user.)
+	// 			})
+	// 		}
+	// .success(function(err, user){
+	// 			res.render("users/edit", {
+	// 				userInfo: user
+	// 			});
+	// 		});
+	// 	});
 
-	app.delete("/delete/:id", function(req, res){
-		db.User.findByIdAndRemove(req.params.id).success(function(err, user){
+	app.delete("/users/:id", function(req, res){
+		db.User.findByIdAndRemove({
+			_id: req.params.id
+		}, function(err, user){
 			user.destroy().success(function() {
 				res.redirect("/");
 			});
@@ -183,7 +185,7 @@
 
 	// ART ROUTES
 
-	/* GET JSON data from Socrata 	*/
+	/* GET JSON data from Socrata */
 	// Show all arts
 	app.get("/arts/index", function (req, res){
 		console.log("Requesting data from socrata...")
@@ -210,29 +212,44 @@
 		res.render('arts/new');
 	});
 
-	app.post("/arts/new", function (req, res){
-		console.log(res);
-		// Get the user from the params
-		var art = new Art(req.body);
-		var artTitle = req.body.title;
-		var artArtist = req.body.artist;
-		var medium = req.body.medium;
-
-		var collection = db.Art.get('artCollection');
-		// Create the new user here
-		collection.insert({
-			"title": title,
-			"artist": artist,
-			"medium": medium
-		}, function (err){
-				// console.log(newUser);
-			if (err) {
-				res.send('There is a problem sending art to database');
+	app.post("arts/new", function(req, res){
+		var art = new Art({
+			_id : req.body._id,
+			artist : req.body.artist,
+			title : req.body.title
+		}).save(function(err, apiRes, apiBody){
+			if (!err) {
+				res.send(req.body);
 			} else {
-				res.send("Art added to database");
+				console.log("No art here!!!!");
+				res.send ("Problem loading art.");
 			}
 		});
 	});
+
+	// app.post("/arts/new", function (req, res){
+	// 	console.log(res);
+	// 	// Get the user from the params
+	// 	var art = new Art(req.body);
+	// 	var artTitle = req.body.title;
+	// 	var artArtist = req.body.artist;
+	// 	var medium = req.body.medium;
+	//
+	// 	var collection = db.Art.get('artCollection');
+	// 	// Create the new user here
+	// 	collection.insert({
+	// 		"title": title,
+	// 		"artist": artist,
+	// 		"medium": medium
+	// 	}, function (err){
+	// 			// console.log(newUser);
+	// 		if (err) {
+	// 			res.send('There is a problem sending art to database');
+	// 		} else {
+	// 			res.send("Art added to database");
+	// 		}
+	// 	});
+	// });
 
 	// Show specific art information
 	app.get("/arts/:id/edit", function(req, res){
@@ -269,7 +286,5 @@
 	// SERVER
 
 	app.listen(process.env.PORT || 3000, function (){
-		var avatar = gravatar.url('req.body.email', {s: '100', r: 'x', d: 'retro'}, true);
-		// console.log(avatar);
 		console.log("this still works");
 	});

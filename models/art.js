@@ -1,4 +1,4 @@
-	// Mongoose import
+	// Load mongoose module
 	var mongoose = require("mongoose");
 
 	// Mongoose Schema definition
@@ -15,12 +15,10 @@
 			type: String,
 			default: "",
 		},
-
 		geometry_long: {
 		type: String,
 		default: "",
 		},
-
 		medium: {
 			type: String,
 			default: ""
@@ -28,11 +26,7 @@
 		title: {
 			type: String,
 			default: ""
-		},
-		location_1: {
-			type: String,
-			default: ""
-		},
+		}
 	});
 
 	// Mongoose model definition

@@ -5,19 +5,29 @@
 	</head>
 
 	<body>
-		<div class="container-fluid" style="padding-left: 0;">
+
+		<div class="container-fluid main-wrapper" style="padding-left: 0;">
+
+			<div class="header clearfix">
+				<% include partials/nav %>
+			</div>
+
 			<!-- MapBox map -->
-			<div id="map" class="col-xs-12 col-sm-6 col-md-8"></div>
+			<div id="map" class="col-md-8"></div>
+
+			<!-- Sidepanel with cards -->
+			<div id="sidepanel" class="col-md-4">
+				<div class="wrapper" >
+						<% include partials/cards %>
+				</div>
+			</div>
+
 		</div>
 
-
-		<header class="row">
-			<% include partials/nav %>
-		</header>
-
-		<div id="sidepanel" class="col-xs-6 col-md-4">
-			<% include partials/cards %>
-		</div>
-
+		<footer class="context footer">
+			<div class="container">
+				<% include partials/footer %>
+			</div>
+		</footer>
 	</body>
 </html>
