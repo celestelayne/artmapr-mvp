@@ -1,6 +1,7 @@
 	// Load mongoose module
 	var mongoose = require("mongoose");
 
+	// Mongoose Schema definition
 	var userSchema = new mongoose.Schema({
 		email: {
 			type: String,
@@ -49,14 +50,17 @@
 
 		bcrypt.hash(params.password, 12, function (err, hash) {
 			params.passwordDigest = hash;
-			console.log(params);
-			that.create(params, function(err, user){
-				if (user)
-				callback (null, user);
-				else {
-					callback ("Signup failed", null);
-				}
-			});
+
+			console.log("The params is: " + params);
+
+			that.create(params, cb);
+			// that.create(params, function(err, user){
+			// 	if (user)
+			// 	callback (null, user);
+			// 	else {
+			// 		callback ("Signup failed", null);
+			// 	}
+			// });
 		});
 	};
 
@@ -67,8 +71,7 @@
 			email: params.email
 		},
 		function (err, user){
-			// var user = this;
-			console.log(user);
+			console.log("The user is: " + user);
 			if(user){
 				user.checkPswrd(params.password, cb);
 			} else {
@@ -90,6 +93,8 @@
 			});
 		};
 
+	// Mongoose model definition
 	var User = mongoose.model("User", userSchema);
 
+	// Interact with the loaded models
 	module.exports = User;

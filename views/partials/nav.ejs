@@ -1,15 +1,27 @@
-<body>
 
-    <nav class="navbar navbar-default navbar-static-top">
-    <div class="col-md-6">
-    <a class="navbar-brand" href="/">
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid main-nav">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
           <img alt="ArtMapr Brand Logo" src="../images/ArtMapr-Logo-05.png" width="80px">
-      </a>
+        </a>
       </div>
-      <div class="col-md-6 navbar-right">
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="users/login" id="login-button" class="btn btn-outlined btn-theme">Log In</a>
-        <a href="users/signup" id="signup-button" class="active btn btn-outlined btn-theme">Sign Up</a>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-responsive-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li style="text-align:center"><a style="color:#F2F2F2" href="/about">About</a></li>
+          <li style="text-align:center"><a style="color:#F2F2F2" href="/contact">Contact</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a class="btn btn-theme btn-outlined" href="/users/login" role="button" id="login-button" >Log In</a></li>
+          <li><a class="btn btn-theme btn-outlined" href="/users/signup" role="button" id="signup-button">Sign Up</a></li>
+        </ul>
       </div>
+    </div>
   </nav>

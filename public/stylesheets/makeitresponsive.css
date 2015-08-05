@@ -1,10 +1,42 @@
 /* Here are the styles that makes the template responsive */
 
 @media only screen and (max-width: 768px) {
-  .map{position: inherit; height: 400px; width: 100%; display: block;}
-  .sidepanel{position: inherit; width: 100%;}
+  .map{
+    position: inherit;
+    height: 400px;
+    width: 100%;
+    display: block;
+  }
+  .sidepanel{
+    position: inherit;
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 480px) {
-  .map {height: 300px;}
+  #map {
+    height: 300px;
+    display: inline-block;
+    position: relative;
+  }
+
+  #sidepanel{
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    padding-top: 30px;
+  }
+
+  .wrapper{
+    padding: 4px 10px 0 10px;
+  }
+
+  #artcard {
+    width: 100%;
+  }
+
+  footer{
+    position: fixed;
+    bottom: 0;
+  }
 }
