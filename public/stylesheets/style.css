@@ -303,7 +303,7 @@
     padding:8px 20px;
   }*/
 
-  /*.btn-outlined {
+  .btn-outlined {
       border-radius: 0;
       -webkit-transition: all 0.3s;
          -moz-transition: all 0.3s;
@@ -321,7 +321,7 @@
       color: #FFF;
       background: #5B3586;
       border-color: #5B3586;
-  }*/
+  }
 
   /*  PROFILE PAGE  */
 

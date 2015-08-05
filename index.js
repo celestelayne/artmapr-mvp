@@ -77,6 +77,22 @@
 		res.render("users/signup");
 	});
 
+	/* POST is where User submits to database? */
+	app.post("/signup", function (req, res){
+		// Get the user from the params
+		var newUser = req.body.user;
+		// Create the new user here
+		console.log(newUser);
+		db.User.createSecure(newUser, function (err, user){
+			if (user) {
+				req.login(user);
+				res.redirect("users/profile");
+			} else {
+				res.redirect("/");
+			}
+		});
+	});
+
 	/* GET Login User */
 	app.get("/users/login", function (req, res){
 		res.render('users/login');
@@ -87,9 +103,9 @@
 		var user = req.body.user;
 		console.log(user);
 		db.User.authenticate(user, function (err, user){
-			if (user) {
+			if (!err) {
 				req.login(user);
-				res.redirect("users/profile");
+				res.redirect("/profile");
 			} else {
 				res.redirect("users/login");
 			}
@@ -108,7 +124,7 @@
 		db.User.find({}, function(err, users){
 			console.log(users);
 			res.render('users/index', {
-			allUsers: users
+				allUsers: users
 			});
 		});
 	});
@@ -126,52 +142,21 @@
 		});
 	});
 
-	/* POST is where User submits to database? */
-	app.post("/signup", function (req, res){
-		// Get the user from the params
-		var newUser = req.body.user;
-		// Create the new user here
-		console.log(newUser);
-		db.User.createSecure(newUser, function (err, user){
-			if (user) {
-				req.login(user);
-				res.redirect("users/profile");
-			} else {
-				res.redirect("/");
-			}
-		});
-	});
-
 	/* GET Send User to Profile if Logged In */
-	app.get("/users/profile", function (req, res){
+	app.get("/profile", function (req, res){
 		if(!req.session.userId) {
 					res.redirect("/login");
 				} else {
 					db.User.findOne({
 						"_id": req.session.userId
 					}).done(function(err, user){
-						res.render("users/profile");
-						console.log(user);
+						res.render("/profile", {
+							userInfo: user
+						})
+						console.log("Profile: " + user);
 					})
 				}
-});
-		// Show specific user data
-	// 	app.get("/users/:id", function(req, res){
-	// 		if(!req.session.userId) {
-	// 			res.redirect("users/login");
-	// 		} else {
-	// 			db.User.findOne({
-	// 				"_id": req.session.userId
-	// 			}).success(function(err, user){
-	// 				res.send(user.)
-	// 			})
-	// 		}
-	// .success(function(err, user){
-	// 			res.render("users/edit", {
-	// 				userInfo: user
-	// 			});
-	// 		});
-	// 	});
+			});
 
 	app.delete("/users/:id", function(req, res){
 		db.User.findByIdAndRemove({

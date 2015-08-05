@@ -6,32 +6,36 @@ ArtMapr is an art discovery web application that uses your preferences (via ‘c
   - allow people to find a community of art-lovers with similar tastes
   - provide a way for people to explore art together
 
+### Heroku
+
+http://agile-taiga-7023.herokuapp.com/
+
 ### Version
 0.0.1
 
-### Tech
+### Technologies Used:
 
 ArtMapr uses a number of tools and frameworks to work properly:
 
-* [Sublime Text] - a cross-platform text and source code editor
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework
+* [node.js] -
+* [Express] -
 * [jQuery] -
-
+* [MongoDB] -
+* [Mapbox] -
+* [Socrata Soda API] - civic data
+* [Twitter Bootstrap] -
 
 ### Todo's
 
 * Render cards using ejs templating
-* Art profile Page
+* Search bar
+* User profile Page
 * Image upload
 * Toggle layers using filter
 * Cache favorites in UserSchema and reference ArtSchema
+* Stretch: Cache favorites (in User) and reference Art model
+* Stretch: Have user “like” art & save to database
 
-
-Explanations of the technologies used
-A couple paragraphs about the general approach you took
-Installation instructions for any dependencies
 Link to your user stories – who are your users, what do they want, and why?
 Link to your wireframes – sketches of major views / interfaces in your application
 Link to some entity relationship diagrams – model out your data relationships before coding
