@@ -54,13 +54,6 @@
 			console.log("The params is: " + params);
 
 			that.create(params, cb);
-			// that.create(params, function(err, user){
-			// 	if (user)
-			// 	callback (null, user);
-			// 	else {
-			// 		callback ("Signup failed", null);
-			// 	}
-			// });
 		});
 	};
 
