@@ -18,10 +18,19 @@
 				  </div>
 
 		  		<div class="panel-footer">
-						<p>User Profile</p>
-						<td><%= userInfo.first_name %></td>
-						<td><%= userInfo.last_name %></td>
-						<td><%= userInfo.email %></td>
+						<thead>
+							<th>User Profile</th>
+						</thead>
+
+						<tbody>
+							<% for (var i = 0; i < user.length; i++) { %>
+								<tr>
+									<td><%= user.first_name %></td>
+									<td><%= user.last_name %></td>
+									<td><%= user.email %></td>
+								</tr>
+							<% }; %>
+						</tbody>
 					</div>
 
 				</div>

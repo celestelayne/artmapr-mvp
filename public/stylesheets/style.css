@@ -15,11 +15,41 @@
 
   --------------------*/
 
+  * {
+    margin: 0 auto;
+    padding: 0;
+  }
+
   body {
   	margin:0;
   	padding:0;
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
+    color: #F2F2F2;
+    line-height: 1.5;
+    margin-top: 50px;
+  }
+
+  tr, td{
+    color: #525252;
+  }
+
+  @media screen and (min-width: 980px) {
+    body {
+      background: #f2f2f2;
+    }
+  }
+
+  @media screen and (max-width: 979px) {
+    body {
+      background: #55DAE1;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    body {
+      background: #8368A3;
+    }
   }
 
 /* NAVIGATION BAR */
@@ -31,27 +61,14 @@
   box-shadow: 15px 15px 100px -15px rgba(20,20,20,1);
   }
 
-  nav.navbar.navbar-default {
-      height: 60px;
-      background-color: #5B3586;
-      border-radius: 0;
-      z-index: 1;
-    }
-
-  #map {
-  	position:absolute;
-  	top:0;
-  	bottom:0;
-  	width:100%;
+  .main-wrapper{
+    padding-right: 0;
   }
 
-  .leaflet-popup-content{
+  .main-nav {
     background-color: #5B3586;
-    border: none;
-  }
-
-  .marker-title, .marker-description, .marker-medium {
-    color: #f2f2f2;
+    border-radius: 0;
+    z-index: 1;
   }
 
   .navbar-right {
@@ -59,34 +76,43 @@
     line-height: 55px;
   }
 
+  .navbar-default>li>a{
+    color: #F2F2F2;
+    text-shadow: none;
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+
+  .navbar-default .navbar-nav>li{
+    margin-right: 15px;
+  }
+
   #login-button  {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 5px;
-/*    margin: auto;*/
-    width: 40%;
+    width: 100%;
     border: 2px solid #F2F2F2;
     border-radius: 0;
     background-color: transparent;
     color: #F2F2F2;
-    /*font-size: 18px;*/
     text-transform: uppercase;
     z-index: 5;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   #signup-button  {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 5px;
-    /*margin: auto;*/
-    width: 40%;
+    width: 100%;
     border: 2px solid #F2F2F2;
     border-radius: 0;
     background-color: transparent;
     color: #F2F2F2;
-    /*font-size: 18px;*/
     text-transform: uppercase;
     z-index: 5;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
     #login-button:hover,
@@ -103,6 +129,75 @@
       border-color: #F2F2F2;
   }
 
+/* MAPBOX MAP */
+
+  #map {
+  	position:absolute;
+  	top:0;
+    left: 0;
+  	bottom:0;
+  	width:100%;
+  }
+
+  .leaflet-popup-content{
+    background-color: #5B3586;
+    border: none;
+  }
+
+  .marker-title, .marker-description, .marker-medium {
+    color: #f2f2f2;
+  }
+
+  /*  SIDEPANEL  */
+
+    #sidepanel {
+      padding-top: 70px;
+    }
+
+    .context.subheader {
+      margin-top: 60px;
+    }
+
+    form.navbar-form {
+      display: inline-block;
+      width: 60%;
+    }
+
+    .navbar-form > .form-control {
+      border: 3px solid #555;
+    }
+
+  /*  TEMPLATE CARDS  */
+
+    #artcard {
+      width: 46%;
+      margin: 1.5%;
+      height: 225px;
+      color: #333;
+      background-color: #F2F2F2;
+      border-color: #F2F2F2;
+      display: inline-block;
+    }
+
+    .circle {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      background: red;
+    }
+
+    .bookmark-icon {
+      color: #F2F2F2;
+    }
+
+    .heart-icon {
+      color: #F2F2F2;
+    }
+
+    .comment-icon {
+      color: #F2F2F2;
+    }
+
 /* FOOTER */
 
   footer {
@@ -112,12 +207,9 @@
     position: fixed;
     text-align: center;
   	bottom: 0;
-  	left: 0;
-  	right: 0;
-  }
-
-  footer p{
-    margin-top: 20px;
+    left: 0;
+    right: 0;
+    display: block;
   }
 
 /*  LOGIN & SIGNUP PAGE */
@@ -162,36 +254,36 @@
   }
 
   .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox] {
-  position: absolute;
-  margin-top: 4px \9;
-  margin-left: -20px;
-  width: 14px;
-  height: 14px;
-  border-radius: 0;
-  box-shadow: none;
+    position: absolute;
+    margin-top: 4px \9;
+    margin-left: -20px;
+    width: 14px;
+    height: 14px;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .login-page-button {
     text-align: center;
     margin: auto;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 10px;*/
   }
 
   .signup-page-button {
     text-align: center;
     margin: auto;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 10px;*/
   }
 
   a.btn.btn-outlined.btn-theme {
     display: block;
     margin: auto;
-    width: 60%;
+    /*width: 60%;*/
   }
 
-  .btn {
+  /*.btn {
     letter-spacing: 1px;
     text-decoration: none;
     background: none;
@@ -204,16 +296,14 @@
       margin-bottom: 0;
       vertical-align: middle;
       white-space: nowrap;
-    /*font-size:14px;*/
     line-height:20px;
     font-weight:700;
     text-transform:uppercase;
     border: 3px solid;
     padding:8px 20px;
-    width: 40%;
-  }
+  }*/
 
-  .btn-outlined {
+  /*.btn-outlined {
       border-radius: 0;
       -webkit-transition: all 0.3s;
          -moz-transition: all 0.3s;
@@ -231,55 +321,7 @@
       color: #FFF;
       background: #5B3586;
       border-color: #5B3586;
-  }
-
-/*  SIDEPANEL  */
-
-  #sidepanel {
-    padding-top: 70px;
-  }
-
-  .context.subheader {
-    margin-top: 60px;
-  }
-
-  form.navbar-form {
-    display: inline-block;
-    width: 60%;
-  }
-
-  .navbar-form > .form-control {
-    border: 3px solid #555;
-  }
-
-/*  TEMPLATE CARDS  */
-
-  .artcard {
-    width: 50%;
-    height: 250px;
-    color: #333;
-    background-color: #F2F2F2;
-    border-color: #F2F2F2;
-  }
-
-  .circle {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    background: red;
-  }
-
-  .bookmark-icon {
-    color: #F2F2F2;
-  }
-
-  .heart-icon {
-    color: #F2F2F2;
-  }
-
-  .comment-icon {
-    color: #F2F2F2;
-  }
+  }*/
 
   /*  PROFILE PAGE  */
 
@@ -308,7 +350,7 @@
 
   .about-image {
     width: 33.33%;
-    height: 350px;
+    height: 325px;
     border: 1px solid #F2F2F2;
     position: relative;
     display: inline-block;
@@ -321,7 +363,7 @@
 
   .about-text {
     width: 66.66%;
-    height: 350px;
+    height: 325px;
     background-color: #5B3586;
     position: relative;
     display: inline-block;
