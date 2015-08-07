@@ -23,10 +23,10 @@
 			type: String,
 			default: ""
 		},
-		favorites: {
-			type: String,
-			default: ""
-		}
+		favorites: [{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Art'
+		}]
 	});
 
 	// Load bcrypt module
@@ -36,7 +36,7 @@
 		return pswrd === pswrdCon;
 	};
 
-	// Create user
+	// Statics method for securely creating and adding a user
 	userSchema.statics.createSecure = function (params, callback) {
 		var isConfirmed;
 
@@ -54,13 +54,6 @@
 			console.log("The params is: " + params);
 
 			that.create(params, cb);
-			// that.create(params, function(err, user){
-			// 	if (user)
-			// 	callback (null, user);
-			// 	else {
-			// 		callback ("Signup failed", null);
-			// 	}
-			// });
 		});
 	};
 

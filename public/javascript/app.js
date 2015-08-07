@@ -1,11 +1,16 @@
   $(function() {
   L.mapbox.accessToken = 'pk.eyJ1IjoiY2xheW5lIiwiYSI6IldjZ2gyLW8ifQ.8AtgyePBb8CL3sh_LX2Awg';
+
+  var geolocate = document.getElementById('geolocate');
   // initializes the map on the "map" div with a given center and zoom
   var map = L.mapbox.map('map', 'clayne.i6afai85', {
       zoomControl: false,
       scrollWheelZoom: false
       })
       .setView([37.794, -122.401], 14);
+
+  var myLayer = L.mapbox.featureLayer().addTo(map);
+
   // Adds zoom control
   new L.Control.Zoom({ position: 'bottomleft' }).addTo(map);
 
@@ -47,6 +52,8 @@
           });
            });
 
+           // This uses the HTML5 geolocation API for mobile and web
+
           if (!navigator.geolocation) {
               geolocate.innerHTML = 'Geolocation is not available';
           } else {
@@ -56,6 +63,9 @@
                   map.locate();
               };
           }
+
+          // once we have the location, zoom and center the map,
+          // and add a single marker
           map.on('locationfound', function(e) {
           map.fitBounds(e.bounds);
 
@@ -67,8 +77,13 @@
                   'marker-symbol': 'star'
                    }
               });
+
+              // Hide the geolocation button
               geolocate.parentNode.removeChild(geolocate);
           });
+
+              // Display error if user decides not to allow their location
+              // to be shared
               map.on('locationerror', function() {
               geolocate.innerHTML = 'Position could not be found';
           });
