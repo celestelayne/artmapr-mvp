@@ -14,10 +14,13 @@ ArtMapr is an art discovery web application that uses your preferences (via ‘c
 ArtMapr uses a number of tools and frameworks to work properly:
 
 * [Sublime Text] - a cross-platform text and source code editor
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework
+* [Twitter Bootstrap] - great UI boilerplate
+* [MongoDB/Mongoose.js] - database and ODM (onject data mapping)
+* [node.js] - server side Javascript interpreter
+* [Express] - fast web app framework
 * [jQuery] -
+* [Mocha] - a JavaScript testing framework
+* [Chai] - a BDD / TDD assertion library
 
 
 ### Todo's

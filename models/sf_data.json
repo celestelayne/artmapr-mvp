@@ -1,0 +1,291 @@
+[ {
+  "title" : "title",
+  "artist" : "artist",
+  "medium" : "medium"
+}
+, {
+  "title" : "Promenade Ribbon",
+  "created_at" : 1995,
+  "artist" : "Acconci, Saitowitz and Soloman",
+  "medium" : "Black concrete, with a strip of glass blocks, to be illuminated at night"
+}
+, {
+  "title" : "Two Wings for Wall and Person",
+  "artist" : "Acconci, Vito",
+  "medium" : "Etching on Paper"
+}
+, {
+  "title" : "Light Beams for the Sky of Transfer Cooridor",
+  "created_at" : 2002,
+  "artist" : "Acconci, Vito",
+  "medium" : "mixed medium"
+}
+, {
+  "title" : "Cityscape #33",
+  "created_at" : 1977,
+  "artist" : "Adams, Gloria Cozzo",
+  "medium" : "Acrylic and ink on canvas"
+}
+, {
+  "title" : "Garden Outside the Gate (The Garden Tapestries)",
+  "created_at" : 1982,
+  "artist" : "Adams, Mark",
+  "medium" : "Flat weave wool tapestry"
+}
+, {
+  "title" : "Garden in San Andreas Valley (The Garden Tapestries)",
+  "artist" : "Adams, Mark",
+  "medium" : "Flat weave wool tapestry"
+}
+, {
+  "title" : "Pond in Golden Gate Park (The Garden Tapestries)",
+  "created_at" : 1981,
+  "artist" : "Adams, Mark",
+  "medium" : "Flat weave wool tapestry"
+}
+, {
+  "title" : "The Dewey Monument (Admiral George Dewey, 1837-1917)",
+  "created_at" : 1901,
+  "artist" : "Aitken, Robert Ingersoll",
+  "medium" : "Bronze figure on granite base"
+}
+, {
+  "title" : "Spandrels on Spreckles Temple of Music",
+  "created_at" : 1899,
+  "artist" : "Aitken, Robert Ingersoll",
+  "medium" : "Cast Concrete"
+}
+, {
+  "title" : "William McKinley",
+  "created_at" : 1904,
+  "artist" : "Aitken, Robert Ingersoll",
+  "medium" : "Bronze, granite and marble"
+}
+, {
+  "title" : "Hall McAllister (1829-1888)",
+  "created_at" : 1904,
+  "artist" : "Aitken, Robert Ingersoll",
+  "medium" : "Bronze"
+}
+, {
+  "title" : "Speaking Stones",
+  "created_at" : 2000,
+  "artist" : "Alavi, Seyed"
+}
+, {
+  "title" : "California",
+  "created_at" : 1934,
+  "artist" : "Albro, Maxine",
+  "medium" : "Fresco"
+}
+, {
+  "title" : "Sanctuario",
+  "created_at" : 2000,
+  "artist" : "Alicia/Montoya, Juana/Emmanuel",
+  "medium" : "fresco buono and wood relief"
+}
+, {
+  "title" : "George Moscone",
+  "created_at" : 1994,
+  "artist" : "Anargyros, Spero",
+  "medium" : "Cast bronze"
+}
+, {
+  "title" : "Outdoor Wall Mosaic",
+  "created_at" : 1988,
+  "artist" : "Anderson, Lois",
+  "medium" : "Tiles, glass, metal, buttons, jewelry on fiberglass wood"
+}
+, {
+  "title" : "Ludwig Van Beethoven (1770-1827)",
+  "artist" : "Anonymous",
+  "medium" : "Bronze"
+}
+, {
+  "title" : "Kanrin Maru Monument",
+  "created_at" : 1960,
+  "artist" : "Anonymous",
+  "medium" : "granite with bronze plaque"
+}
+, {
+  "title" : "Lotta's Fountain",
+  "created_at" : 1875,
+  "artist" : "Anonymous",
+  "medium" : "cast iron"
+}
+, {
+  "title" : "Fountain of the Tortoises",
+  "created_at" : 1900,
+  "artist" : "Anonymous",
+  "medium" : "Marble and bronze"
+}
+, {
+  "title" : "Untitled (Stone Lantern)",
+  "artist" : "Anonymous",
+  "medium" : "Stone"
+}
+, {
+  "title" : "Amazarasti-no Hotoke (the Buddha that sits throughout the sunny and rainy weathe",
+  "artist" : "Anonymous",
+  "medium" : "Bronze"
+}
+, {
+  "title" : "Benjamin Franklin (1706-1790)",
+  "created_at" : 1879,
+  "artist" : "Anonymous",
+  "medium" : "Pot metal"
+}
+, {
+  "title" : "Mission Post",
+  "created_at" : 2010,
+  "artist" : "Arcega, Michael",
+  "medium" : "Wood, steel"
+}
+, {
+  "title" : "The Life of George Washington",
+  "created_at" : 1935,
+  "artist" : "Arnautoff, Victor",
+  "medium" : "Fresco"
+}
+, {
+  "title" : "Edison (1847-1931) Washington (1732-1799) and Shakespeare (1564-1616)",
+  "created_at" : 1934,
+  "artist" : "Arnautoff, Victor Mikhail",
+  "medium" : "cast concrete"
+}
+, {
+  "title" : "City Life",
+  "created_at" : 1934,
+  "artist" : "Arnautoff, Victor Mikhail",
+  "medium" : "Fresco"
+}
+, {
+  "title" : "Yin Yang",
+  "created_at" : 1992,
+  "artist" : "Arneson, Robert"
+}
+, {
+  "title" : "Untitled",
+  "artist" : "Arnold, David",
+  "medium" : "Stained glass windows"
+}
+, {
+  "title" : "Redding School, Self-Portrait",
+  "created_at" : 1984,
+  "artist" : "Asawa, Ruth",
+  "medium" : "Glass fiber reinforced concrete"
+}
+, {
+  "title" : "Origami Fountains",
+  "created_at" : 1999,
+  "artist" : "Asawa, Ruth",
+  "medium" : "bronze"
+}
+, {
+  "title" : "Hagiwara Family Plaque",
+  "created_at" : 1974,
+  "artist" : "Asawa, Ruth",
+  "medium" : "Bronze"
+}
+, {
+  "title" : "Cyclone Fragment",
+  "created_at" : 1996,
+  "artist" : "Aycock, Alice",
+  "medium" : "Stainless steel"
+}
+, {
+  "title" : "Functional and Fantasy Stair",
+  "created_at" : 1996,
+  "artist" : "Aycock, Alice",
+  "medium" : "Stainless steel"
+}
+, {
+  "title" : "Transverse and Column",
+  "artist" : "Barnes, Carroll",
+  "medium" : "corten steel"
+}
+, {
+  "title" : "Secret Garden",
+  "created_at" : 2004,
+  "artist" : "Barr, Aileen",
+  "medium" : "ceramic tile"
+}
+, {
+  "title" : "Secret Garden",
+  "created_at" : 2004,
+  "artist" : "Barr, Aileen",
+  "medium" : "hand-carved and glazed ceramic tiles"
+}
+, {
+  "title" : "Secret Garden",
+  "created_at" : 2004,
+  "artist" : "Barr, Aileen",
+  "medium" : "ceramic tile"
+}
+, {
+  "title" : "Secret Garden",
+  "created_at" : 2004,
+  "artist" : "Barr, Aileen",
+  "medium" : "ceramic tile"
+}
+, {
+  "title" : "Skygate",
+  "created_at" : 1985,
+  "artist" : "Barr, Roger",
+  "medium" : "Mirror finished stainless steel Type 316 L"
+}
+, {
+  "title" : "Phoenix",
+  "created_at" : 1997,
+  "artist" : "Barth, Anders",
+  "medium" : "terracotta relief"
+}
+, {
+  "title" : "First Person Plural",
+  "created_at" : 2000,
+  "artist" : "Barth, Anders",
+  "medium" : "Hand cut ceramic tiles"
+}
+, {
+  "title" : "Reflection",
+  "created_at" : 2010,
+  "artist" : "Bates, Diana Pompelly",
+  "medium" : "Stainless steel "
+}
+, {
+  "title" : "The Hesperides",
+  "created_at" : 1981,
+  "artist" : "Beasley, Bruce",
+  "medium" : "Aluminum"
+}
+, {
+  "title" : "                                                      ",
+  "created_at" : 1972,
+  "artist" : "Beauchemin, Micheline",
+  "medium" : "Hooked wool tapestry"
+}
+, {
+  "title" : "San Francisco Nova",
+  "created_at" : 1979,
+  "artist" : "Bechtle, Robert",
+  "medium" : "Oil on canvas"
+}
+, {
+  "title" : "Leatherback Sea Turtle",
+  "created_at" : 2002,
+  "artist" : "Beery, Jonathan",
+  "medium" : "Bronze"
+}
+, {
+  "title" : "The Pink Short-spined Starfish",
+  "created_at" : 2002,
+  "artist" : "Beery, Jonathan",
+  "medium" : "bronze"
+}
+, {
+  "title" : "Playland Revisited",
+  "created_at" : 1996,
+  "artist" : "Beldner, Ray",
+  "medium" : "Stainless steel mesh over steel armature with photo-etched plaques."
+}
+ ]
