@@ -15,5 +15,13 @@
   "scripts": {
     "start": "node index.js",
     "postinstall": "bower install"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6"
   }
 }

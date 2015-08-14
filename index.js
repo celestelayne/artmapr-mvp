@@ -1,6 +1,8 @@
 	var express = require("express"),
 		bodyParser = require("body-parser"),
 		path = require("path"),
+		morgan = require("morgan"), // request logs
+		fs = require("fs"), // allows you to read a file from the file system and display contents on terminal
 		request = require("request");
 
 	var db = require("./models");
@@ -13,6 +15,8 @@
 	app.use(express.static("bower_components"));
 	app.use(express.static("node_modules"));
 	app.use(express.static("public"));
+	// Set up the logger
+	app.use(morgan("combined"));
 
 	app.use(session({
 		secret: 'alloo pie',
@@ -72,7 +76,7 @@
 	});
 
 	// USER ROUTES
-	/* GET Sign Up New User */
+	/* GET Sign Up A New User */
 	app.get("/users/signup", function (req, res){
 		res.render("users/signup");
 	});
@@ -98,7 +102,7 @@
 		res.render('users/login');
 	});
 
-	//
+	// Insert or create a user
 	app.post("/login", function (req, res){
 		var user = req.body.user;
 		console.log(user);
@@ -129,7 +133,7 @@
 		});
 	});
 
-	// Process user update
+	// Update user 
 	app.put("/users/:id", function(req, res){
 		db.User.findById(req.params.id).success(function(err, user){
 			user.updateAttributes({
@@ -142,8 +146,29 @@
 		});
 	});
 
+<<<<<<< HEAD
 	/* GET Send User to Profile if Logged In */
 	app.get("/profile", function (req, res){
+=======
+	/* POST submits User to database */
+	app.post("/signup", function (req, res){
+		// Get the user from the params
+		var newUser = req.body.user;
+		// Create the new user here
+		console.log(newUser);
+		db.User.createSecure(newUser, function (err, user){
+			if (user) {
+				req.login(user);
+				res.redirect("users/profile");
+			} else {
+				res.redirect("/");
+			}
+		});
+	});
+
+	/* GET Read User Profile if Logged In */
+	app.get("/users/profile", function (req, res){
+>>>>>>> develop
 		if(!req.session.userId) {
 					res.redirect("/login");
 				} else {
@@ -173,21 +198,24 @@
 	/* GET JSON data from Socrata */
 	// Show all arts
 	app.get("/arts/index", function (req, res){
-		console.log("Requesting data from socrata...")
-		request.get({uri: "https://data.sfgov.org/resource/zfw6-95su.json"},
-		function(error, apiRes, apiBody){
+		// console.log("Requesting data from socrata...")
+		request({
+				method: 'GET',
+				uri: "https://data.sfgov.org/resource/zfw6-95su.json?$select=artist, created_at, title, medium&$limit=50"
+			}, function(error, apiRes, apiBody){
+				// var string = '';
 			if (!error && apiRes.statusCode == 200) {
-				console.log("uh oh! Got an error from Socrata")
+				// console.log("You're good to go")
 			}
-				console.log("Socrata API response is back")
+				// console.log("Socrata API response is back")
 
-				var artdata = JSON.parse(apiBody);
-
+				var sfdata = JSON.parse(apiBody);
+				console.log(sfdata) // prints out art in the terminal
 				console.log("Grabbing the civic art data")
 				res.render('arts/index', {
-					allArts: JSON.parse(apiBody)
+					allArts: sfdata
 				});
-		});
+			}).pipe(fs.createWriteStream("models/sf_data.json"));
 	});
 
 
@@ -199,7 +227,7 @@
 
 	app.post("arts/new", function(req, res){
 		var art = new Art({
-			_id : req.body._id,
+			// _id : req.body._id,
 			artist : req.body.artist,
 			title : req.body.title
 		}).save(function(err, apiRes, apiBody){

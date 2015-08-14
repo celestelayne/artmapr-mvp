@@ -102,7 +102,7 @@ db.User.create({
 
 npm install --save bcrypt
 
-var bcrypt = require("bcrypt");
+var bcrypt = require("bcrypt"); —> securely creates a user
 
 // ADD USER SIGN UP PAGE
 

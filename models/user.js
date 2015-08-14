@@ -23,9 +23,13 @@
 			type: String,
 			default: ""
 		},
-		favorites: {
-			type: String,
-			default: ""
+		favorites: [{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Art'
+		}],
+		active: {
+			type: Boolean,
+			default: false
 		}
 	});
 
@@ -36,7 +40,7 @@
 		return pswrd === pswrdCon;
 	};
 
-	// Create user
+	// Statics method for securely creating and adding a user
 	userSchema.statics.createSecure = function (params, callback) {
 		var isConfirmed;
 
