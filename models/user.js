@@ -26,7 +26,11 @@
 		favorites: [{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Art'
-		}]
+		}],
+		active: {
+			type: Boolean,
+			default: false
+		}
 	});
 
 	// Load bcrypt module
