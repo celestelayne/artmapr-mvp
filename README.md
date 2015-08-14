@@ -15,10 +15,11 @@ ArtMapr uses a number of tools and frameworks to work properly:
 
 * [Sublime Text] - a cross-platform text and source code editor
 * [Twitter Bootstrap] - great UI boilerplate
-* [MongoDB/Mongoose.js] - database and ODM (onject data mapping)
+* [MongoDB/Mongoose.js] - database and ORM framework to connect to MongoDB (database)
 * [node.js] - server side Javascript interpreter
 * [Express] - fast web app framework
 * [jQuery] -
+* [Gulp] - precompiler
 * [Mocha] - a JavaScript testing framework
 * [Chai] - a BDD / TDD assertion library
 
