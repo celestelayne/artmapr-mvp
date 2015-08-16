@@ -22,6 +22,9 @@ ArtMapr uses a number of tools and frameworks to work properly:
 * [jQuery] -
 * [MongoDB] -
 * [Mapbox] -
+* [Gulp] - precompiler
+* [Mocha] - test runner
+* [Chai] - assertion library
 * [Socrata Soda API] - civic data
 * [Twitter Bootstrap] -
 
