@@ -24,7 +24,7 @@
       results.shift();
       // console.log("RESULTs", results);
 
-      $.each(results, function (index, result){
+      $.each(results, function (_id, result){
           //  console.dir(result);
            result.geometry = JSON.parse(result.geometry);
            L.mapbox.featureLayer({

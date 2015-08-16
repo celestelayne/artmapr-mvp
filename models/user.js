@@ -1,7 +1,7 @@
 	// Load mongoose module
 	var mongoose = require("mongoose");
 
-	// Mongoose Schema definition
+	// Create mongoose user schema
 	var userSchema = new mongoose.Schema({
 		email: {
 			type: String,
@@ -24,18 +24,20 @@
 			default: ""
 		},
 		favorites: [{
-			type: mongoose.Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId, // referencing data from Art schema
 			ref: 'Art'
 		}],
 		active: {
 			type: Boolean,
 			default: false
-		}
+		},
+		created_at: Date
 	});
 
 	// Load bcrypt module
-	var bcrypt = require("bcrypt");
+	var bcrypt = require("bcrypt"); // library to help you hash passwords
 
+	// Make sure the password and the password confirmation are the same
 	var confirm = function (pswrd, pswrdCon) {
 		return pswrd === pswrdCon;
 	};
@@ -62,7 +64,7 @@
 	};
 
 	// Authenticate User
-	userSchema.statics.authenticate = function(params, cb){
+	userSchema.statics.authenticate = function(params, callback){
 		// find just one user with the email
 		this.findOne({
 			email: params.email
@@ -70,9 +72,9 @@
 		function (err, user){
 			console.log("The user is: " + user);
 			if(user){
-				user.checkPswrd(params.password, cb);
+				user.checkPswrd(params.password, callback);
 			} else {
-				cb("Login failed - no user found");
+				callback("Login failed - no user found");
 			}
 		});
 	};
@@ -90,8 +92,8 @@
 			});
 		};
 
-	// Mongoose model definition
+	// Create mongoose model
 	var User = mongoose.model("User", userSchema);
 
-	// Interact with the loaded models
+	// Make available to users in Node app
 	module.exports = User;

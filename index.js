@@ -1,7 +1,7 @@
 	var express = require("express"),
-		bodyParser = require("body-parser"),
+		bodyParser = require("body-parser"), // get parameters from POST requests
 		path = require("path"),
-		morgan = require("morgan"), // request logs
+		morgan = require("morgan"), // log requests to console so can see what is happening
 		fs = require("fs"), // allows you to read a file from the file system and display contents on terminal
 		request = require("request");
 
@@ -62,126 +62,120 @@
 	  });
 	});
 
-	// STATIC PAGE ROUTES
-	app.get('/about', function(req, res){
+	/*  STATIC PAGE ROUTES  */
+
+	// About Page Route
+	app.get('/about', function (req, res){
 	  res.render('about', {
 	    title: 'About'
 	  });
 	});
 
-	app.get('/contact', function(req, res){
+	// Contact Page Route
+	app.get('/contact', function (req, res){
 	  res.render('contact', {
 	    title: 'Contact'
 	  });
 	});
 
-	// USER ROUTES
-	/* GET Sign Up A New User */
+	/*  USER ROUTES  */
+	
+	// GET - new user 
 	app.get("/users/signup", function (req, res){
+		// user inputs parameters in signup form
 		res.render("users/signup");
 	});
 
-	/* GET Login User */
-	app.get("/users/login", function (req, res){
-		res.render('users/login');
-	});
-
-	// Insert or create a user
-	app.post("/login", function (req, res){
-		var user = req.body.user;
+	// POST - users POST data to create a new user account
+	app.post("/users/signup", function (req, res){
+		console.log(req.body.user);
+		// Get the user params from the request
+		var newUser = req.body.user;
+		// Create the new user here
 		console.log(user);
-		db.User.authenticate(user, function (err, user){
+		// Call create secure static method with that email and password
+		db.User.createSecure(newUser, function (err, user){ // runs after db.User.create finishes
 			if (user) {
 				req.login(user);
-				res.redirect("users/profile");
+				res.redirect("/users/profile");
+				console.log("New User signed Up!!!!!")
 			} else {
-				res.redirect("users/login");
+				res.redirect("/users/signup");
 			}
 		});
 	});
 
-	/* GET Logout User */
+	// User login route
+	app.get("/users/login", function (req, res){
+		res.render("users/login");
+	});
+
+	// Type user password and email into
+	// login form and post to THIS route to login 
+	app.post("/users/login", function (req, res){
+		var user = req.body.user;
+		console.log(user);
+			db.User.authenticate(user, function (err, user){
+				if (!err) {
+					console.log("Logging in current user");
+					// Login user
+					req.login(user);
+					// Redirect to user profile
+					res.redirect("/users/profile");
+				} else {
+					res.redirect("/users/login");
+				}
+			});
+	});
+
+
+	// GET User Profile if Logged In 
+	app.get("/users/profile", function (req, res){
+		req.currentUser(function (err, user){
+				// res.send("Welcome, " + user.email);
+				res.render("users/profile",{
+					userInfo: user
+				});
+		});
+	});
+
+	// GET User logout Route 
 	app.get("/logout", function (req, res){
-		console.log("Logging out")
+		console.log("Logging out user")
 		req.logout();
 		res.redirect("/");
 	});
 
-	// Get all users
-	app.get('/users/index', function(req, res){
+	// Get all the users
+	app.get('/users/index', function (req, res){
 		db.User.find({}, function(err, users){
+			// object of all the users in console
 			console.log(users);
+			// render the list of users on the index page
 			res.render('users/index', {
-			allUsers: users
+				allUsers: users
 			});
 		});
 	});
 
-	// Update user 
-	app.put("/users/:id", function(req, res){
-		db.User.findById(req.params.id).success(function(err, user){
-			user.updateAttributes({
+	// Update user parameters
+	app.put("/users/:id", function (req, res){
+		request({
+			method: "PUT",
+			formData: {
 				first_name: req.body.first_name,
 				last_name: req.body.last_name,
 				email: req.body.email
-			}).success(function(){
-				res.redirect("/");
-			});
-		});
-	});
-
-	/* POST submits User to database */
-	app.post("/signup", function (req, res){
-		// Get the user from the params
-		var newUser = req.body.user;
-		// Create the new user here
-		console.log(newUser);
-		db.User.createSecure(newUser, function (err, user){
-			if (user) {
-				req.login(user);
-				res.redirect("users/profile");
-			} else {
-				res.redirect("/");
 			}
 		});
 	});
 
-	/* GET Read User Profile if Logged In */
-	app.get("/users/profile", function (req, res){
-		if(!req.session.userId) {
-					res.redirect("/login");
-				} else {
-					db.User.findOne({
-						"_id": req.session.userId
-					}).done(function(err, user){
-						res.render("users/profile");
-						console.log(user);
-					})
-				}
-});
-		// Show specific user data
-	// 	app.get("/users/:id", function(req, res){
-	// 		if(!req.session.userId) {
-	// 			res.redirect("users/login");
-	// 		} else {
-	// 			db.User.findOne({
-	// 				"_id": req.session.userId
-	// 			}).success(function(err, user){
-	// 				res.send(user.)
-	// 			})
-	// 		}
-	// .success(function(err, user){
-	// 			res.render("users/edit", {
-	// 				userInfo: user
-	// 			});
-	// 		});
-	// 	});
-
-	app.delete("/users/:id", function(req, res){
+	app.delete("/users/:id", function (req, res){
 		db.User.findByIdAndRemove({
 			_id: req.params.id
 		}, function(err, user){
 			user.destroy().success(function() {
+				res.send(204)
 				res.redirect("/");
 			});
 		});

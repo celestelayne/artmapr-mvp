@@ -12,25 +12,14 @@
 
 			<div class="col-md-4 col-md-offset-4" >
 				<div class="panel-default profile-panel">
-
+					<a href="/users/logout" class="btn btn-primary">Logout</a>
+					
 					<div class="panel-body">
-						Gravatar goes in here
+						<p>Welcome, <%= userInfo.email %></p>
 				  </div>
 
 		  		<div class="panel-footer">
-						<thead>
-							<th>User Profile</th>
-						</thead>
-
-						<tbody>
-							<% for (var i = 0; i < user.length; i++) { %>
-								<tr>
-									<td><%= user.first_name %></td>
-									<td><%= user.last_name %></td>
-									<td><%= user.email %></td>
-								</tr>
-							<% }; %>
-						</tbody>
+						
 					</div>
 
 				</div>
